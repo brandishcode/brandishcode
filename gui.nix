@@ -27,7 +27,7 @@
   # options
   fordev = {
     lua = false;
-    cpp = true;
-    python = true;
+    cpp = false;
+    python = false;
   };
 }
