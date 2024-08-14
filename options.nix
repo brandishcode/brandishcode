@@ -2,6 +2,17 @@
 
 {
   options = {
+
+    foros = {
+      nonnixos = lib.mkOption {
+        default = true;
+        type = lib.types.bool;
+        description = ''
+          Only for non-nixos distro
+        '';
+      };
+    };
+
     fordev = {
       lua = lib.mkOption {
         default = false;

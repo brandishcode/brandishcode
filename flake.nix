@@ -21,17 +21,25 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       nixvimModule = nixvim.homeManagerModules.nixvim;
+      options = {
+        foros = { nonnixos = true; };
+        fordev = {
+          lua = false;
+          cpp = false;
+          python = false;
+        };
+      };
     in {
 
       homeConfigurations = {
         "tui" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ nixvimModule ./tui.nix ];
+          modules = [ nixvimModule options ./tui.nix ];
         };
 
         "gui" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ nixvimModule ./gui.nix ];
+          modules = [ nixvimModule options ./gui.nix ];
         };
       };
     };

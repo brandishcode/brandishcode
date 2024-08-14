@@ -23,11 +23,4 @@
     ./modules/sway
     ./development
   ];
-
-  # options
-  fordev = {
-    lua = false;
-    cpp = false;
-    python = false;
-  };
 }
