@@ -15,7 +15,7 @@
   programs = { home-manager.enable = true; };
 
   imports = [
-    ./options.nix
+    ./options
     ./modules/neovim
     ./modules/tmux
     ./modules/git

@@ -4,6 +4,15 @@
   options = {
 
     foros = {
+
+      username = lib.mkOption {
+        default = "develope";
+        type = lib.types.string;
+        description = ''
+          Distro username
+        '';
+      };
+
       nonnixos = lib.mkOption {
         default = true;
         type = lib.types.bool;
