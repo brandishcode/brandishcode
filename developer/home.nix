@@ -14,13 +14,6 @@
 
   programs = { home-manager.enable = true; };
 
-  imports = [
-    ./options
-    ./modules/neovim
-    ./modules/tmux
-    ./modules/git
-    ./modules/firefox
-    ./modules/sway
-    ./development
-  ];
+  imports =
+    [ ./options ./modules/tmux ./modules/git ./modules/firefox ./modules/sway ];
 }

@@ -10,35 +10,32 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:brandishcode/nixvim-configuration";
   };
 
   outputs = { nixpkgs, home-manager, nixvim, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      nixvimModule = nixvim.homeManagerModules.nixvim;
+      nixvim' = { home.packages = [ nixvim.packages.${system}.default ]; };
       options = {
-        foros = {
-          username = "developer";
-          nonnixos = false;
-        };
-        fordev = {
-          lua = false;
-          cpp = true;
-          python = false;
-        };
+        username = "developer";
+        hostname = "nixos";
+        nonnixos = false;
       };
     in {
       homeConfigurations = {
-        "${options.foros.username}" =
-          home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [ nixvimModule options ./home.nix ];
-          };
+        "${options.username}" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ options ./home.nix nixvim' ];
+        };
+      };
+
+      nixosConfigurations = {
+        "${options.username}@${options.hostname}" = nixpkgs.lib.nixosSystem {
+          inherit pkgs;
+          modules = [ options ./configuration.nix ];
+        };
       };
     };
 }

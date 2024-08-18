@@ -1,8 +1,12 @@
-{ ... }:
+{ config, ... }:
 
 {
-  programs.git = {
-    enable = true;
-    extraConfig = { init.defaultBranch = "main"; };
+  config = {
+    programs.git = {
+      enable = true;
+      userName = config.git.username;
+      userEmail = config.git.useremail;
+      extraConfig = { init.defaultBranch = "main"; };
+    };
   };
 }

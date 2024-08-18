@@ -9,7 +9,7 @@ in {
     home = {
       # Override the nix installed sway by the distro installed package.
       # This is for non-NixOS distros.
-      shellAliases = { sway = lib.mkIf config.foros.nonnixos "/usr/bin/sway"; };
+      shellAliases = { sway = lib.mkIf config.nonnixos "/usr/bin/sway"; };
       packages = with pkgs; [ pkgs.${menu} wl-clipboard ];
     };
     programs = {
