@@ -1,26 +1,35 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
-  home.username = "developer";
-  home.homeDirectory = "/home/developer";
+  config = {
+    home = {
+      username = "developer";
+      homeDirectory = "/home/developer";
 
-  home.stateVersion = "24.05";
+      stateVersion = "24.05";
 
-  home.shellAliases = {
-    hms = "home-manager switch -b backup --flake ~/nix-configuration/#gui";
+      sessionVariables = { EDITOR = "nvim"; };
+
+      shellAliases = {
+        hms = ''
+          home-manager switch -b backup --flake "$(readlink -f /home/${config.username}/${config.configpath}/#developer)"
+        '';
+      };
+
+      packages = with pkgs; [ noto-fonts noto-fonts-cjk noto-fonts-emoji ];
+    };
+
+    programs = { home-manager.enable = true; };
   };
-
-  home.packages = with pkgs; [ noto-fonts noto-fonts-cjk noto-fonts-emoji ];
-
-  programs = { home-manager.enable = true; };
 
   imports = [
     ./options
-    ./modules/neovim
     ./modules/tmux
     ./modules/git
     ./modules/firefox
     ./modules/sway
-    ./development
+    ./modules/ssh
+    ./modules/terminal
   ];
 }
+

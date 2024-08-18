@@ -2,59 +2,68 @@
 
 {
   options = {
-
-    foros = {
-
-      username = lib.mkOption {
-        default = "develope";
-        type = lib.types.string;
-        description = ''
-          Distro username
-        '';
-      };
-
-      nonnixos = lib.mkOption {
-        default = true;
-        type = lib.types.bool;
-        description = ''
-          Only for non-nixos distro
-        '';
-      };
+    configpath = lib.mkOption {
+      default = "nixos-configuration";
+      type = lib.types.str;
+      description = ''
+        NixOS configuration path. Value should be relative to the home folder.
+      '';
     };
 
-    fordev = {
-      lua = lib.mkOption {
-        default = false;
-        type = lib.types.bool;
+    username = lib.mkOption {
+      default = "developer";
+      type = lib.types.str;
+      description = ''
+        Distro username
+      '';
+    };
+
+    hostname = lib.mkOption {
+      default = "nixos";
+      type = lib.types.str;
+      description = ''
+        Nixos hostname
+      '';
+    };
+
+    nonnixos = lib.mkOption {
+      default = true;
+      type = lib.types.bool;
+      description = ''
+        Only for non-nixos distro
+      '';
+    };
+
+    terminal = lib.mkOption {
+      default = "foot";
+      type = lib.types.str;
+      description = ''
+        Terminal
+      '';
+    };
+
+    git = {
+      username = lib.mkOption {
+        default = "brandishcode";
+        type = lib.types.str;
         description = ''
-          Lua development needed
+          Git username
         '';
       };
-
-      cpp = lib.mkOption {
-        default = false;
-        type = lib.types.bool;
+      useremail = lib.mkOption {
+        default = "";
+        type = lib.types.str;
         description = ''
-          Cpp development needed
+          Git username
         '';
       };
-
-      python = lib.mkOption {
-        default = false;
-        type = lib.types.bool;
+      token = lib.mkOption {
+        default = "";
+        type = lib.types.str;
         description = ''
-          Python development needed
+          Github CLI token (Github access token)
         '';
       };
-
-      graphics = lib.mkOption {
-        default = false;
-        type = lib.types.bool;
-        description = ''
-          Graphics Development
-        '';
-      };
-
     };
   };
 }
