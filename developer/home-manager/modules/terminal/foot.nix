@@ -7,6 +7,7 @@
         enable = true;
         settings = {
           colors = {
+            alpha = "0.8";
             background = lib.strings.removePrefix "#" config.color.background;
             foreground = lib.strings.removePrefix "#" config.color.foreground;
 

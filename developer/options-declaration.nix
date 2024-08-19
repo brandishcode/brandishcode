@@ -58,7 +58,7 @@
       default = {
         background = "#1a1b26";
         foreground = "#c0caf5";
-        black = "#15161E";
+        black = "#414868";
         red = "#f7768e";
         green = "#9ece6a";
         yellow = "#e0af68";
