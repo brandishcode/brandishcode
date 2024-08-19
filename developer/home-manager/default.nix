@@ -23,7 +23,6 @@
   };
 
   imports = [
-    ./options
     ./modules/tmux
     ./modules/git
     ./modules/firefox

@@ -269,11 +269,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1723988881,
-        "narHash": "sha256-9WLx/7TwEeIC/mKYyS9UIJ6lg9Npd3zpnYB8Icmztb0=",
+        "lastModified": 1724071995,
+        "narHash": "sha256-8FBtAGBw14rjzee9CNB10iujLKXhoueLos/5ErFBdf8=",
         "owner": "brandishcode",
         "repo": "nixvim-configuration",
-        "rev": "ae4bbc8e0dcfc3b5b4ffb253ff205ef95046929b",
+        "rev": "f6299b914269aeaf117e40d8580b6d3d90bdfa7a",
         "type": "github"
       },
       "original": {
@@ -308,6 +308,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1724075102,
+        "narHash": "sha256-lpk2Lz3YQDp8ahvBcxho2FqmAz+9z1OWHbQ1uwAkp68=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "645be3c7559425d8c6ce73ffaef740e4c42d1056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "nuschtosSearch": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -335,7 +350,8 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "nur": "nur"
       }
     },
     "systems": {

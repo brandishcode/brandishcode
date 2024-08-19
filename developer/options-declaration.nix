@@ -42,28 +42,42 @@
       '';
     };
 
-    git = {
-      username = lib.mkOption {
-        default = "brandishcode";
-        type = lib.types.str;
-        description = ''
-          Git username
-        '';
+    git = lib.mkOption {
+      default = {
+        username = "brandishcode";
+        useremail = "";
+        token = "";
       };
-      useremail = lib.mkOption {
-        default = "";
-        type = lib.types.str;
-        description = ''
-          Git username
-        '';
+      description = ''
+        Git options
+      '';
+    };
+
+    color = lib.mkOption {
+      # Tokyo night as default
+      default = {
+        background = "#1a1b26";
+        foreground = "#c0caf5";
+        black = "#15161E";
+        red = "#f7768e";
+        green = "#9ece6a";
+        yellow = "#e0af68";
+        blue = "#7aa2f7";
+        magenta = "#bb9af7";
+        cyan = "#7dcfff";
+        white = "#a9b1d6";
+        brightblack = "#414868";
+        brightred = "#f7768e";
+        brightgreen = "#9ece6a";
+        brightyellow = "#e0af68";
+        brightblue = "#7aa2f7";
+        brightmagenta = "#bb9af7";
+        brightcyan = "#7dcfff";
+        brightwhite = "#c0caf5";
       };
-      token = lib.mkOption {
-        default = "";
-        type = lib.types.str;
-        description = ''
-          Github CLI token (Github access token)
-        '';
-      };
+      description = ''
+        Color theme
+      '';
     };
   };
 }
