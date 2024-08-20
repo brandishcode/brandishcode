@@ -23,12 +23,12 @@
   };
 
   imports = [
-    ./modules/tmux
-    ./modules/git
-    ./modules/firefox
-    ./modules/sway
-    ./modules/ssh
-    ./modules/terminal
+    ../modules/tmux
+    ../modules/git
+    ../modules/firefox
+    ../modules/sway
+    ../modules/ssh
+    ../modules/terminal
   ];
 }
 
