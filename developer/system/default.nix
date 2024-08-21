@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -52,14 +52,25 @@
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.groups = { development = { }; };
     users.users.developer = {
       isNormalUser = true;
       description = "developer";
       extraGroups = [ "development" "networkmanager" "wheel" ];
-      # packages = with pkgs; [ ];
     };
 
-    users.groups = { development = { }; };
+    # Display managger setup
+    services.displayManager = {
+      defaultSession = "sway";
+      sessionPackages = with pkgs; [ sway ];
+      sddm = {
+        theme = "tokyo-night-sddm";
+        enable = true;
+        wayland.enable = true;
+      };
+    };
+    environment.systemPackages =
+      [ (pkgs.libsForQt5.callPackage ../pkgs/sddm-theme.nix { }) ];
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
@@ -97,7 +108,5 @@
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "24.05"; # Did you read the comment?
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-    security.polkit.enable = true;
-
   };
 }
