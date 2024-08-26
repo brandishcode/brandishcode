@@ -37,6 +37,10 @@
                   name = "nixos-options";
                   url = "https://search.nixos.org/options?";
                 }
+                {
+                  name = "nixvim";
+                  url = "https://nix-community.github.io/nixvim";
+                }
               ];
             }
           ];
