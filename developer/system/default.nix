@@ -11,18 +11,8 @@
 
   config = {
     # Bootloader.
-    boot.loader = {
-      grub = {
-        enable = true;
-        useOSProber = true;
-        efiSupport = true;
-        device = "nodev";
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-    };
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
     networking.hostName = config.hostname; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
