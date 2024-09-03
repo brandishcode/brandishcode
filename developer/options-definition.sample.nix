@@ -1,4 +1,5 @@
 {
+  gpu = "amd";
   configpath = "nixos-configuration";
   username = "developer";
   hostname = "nixos";

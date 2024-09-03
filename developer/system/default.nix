@@ -5,9 +5,9 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-  ];
+
+  # Include the results of the hardware scan.
+  imports = [ ./hardware-configuration.nix ];
 
   config = {
     # Bootloader.
@@ -59,7 +59,12 @@
       extraGroups = [ "development" "networkmanager" "wheel" ];
     };
 
-    # Display managger setup
+    # SDDM and Sway setup
+    security.polkit.enable = true;
+    environment.sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = "1";
+      NIXOS_OZONE_WL = "1";
+    };
     services.displayManager = {
       defaultSession = "sway";
       sessionPackages = with pkgs; [ sway ];
@@ -107,6 +112,8 @@
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "24.05"; # Did you read the comment?
+
+    # enable flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
   };
 }
