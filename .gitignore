@@ -1,1 +1,4 @@
 **/options-definition.nix
+
+# For testing nix builds
+sandbox/
