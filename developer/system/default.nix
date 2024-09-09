@@ -7,6 +7,7 @@
 {
 
   # Include the results of the hardware scan.
+  # Include home-manager
   imports = [ ./hardware-configuration.nix ];
 
   config = {
@@ -44,9 +45,9 @@
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.groups = { development = { }; };
-    users.users.developer = {
+    users.users.${config.username} = {
       isNormalUser = true;
-      description = "developer";
+      description = "Developer user";
       extraGroups = [ "development" "networkmanager" "wheel" ];
     };
 

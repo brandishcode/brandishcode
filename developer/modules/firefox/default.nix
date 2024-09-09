@@ -1,12 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [ "tokyo-night-v2" ];
-    };
-  };
   programs.firefox = {
     enable = true;
     profiles = {

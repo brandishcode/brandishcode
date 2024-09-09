@@ -3,11 +3,6 @@
 {
   config = {
     home = {
-      username = "developer";
-      homeDirectory = "/home/developer";
-
-      stateVersion = "24.05";
-
       sessionVariables = { EDITOR = "nvim"; };
 
       shellAliases = {
