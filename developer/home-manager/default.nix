@@ -14,7 +14,10 @@
       packages = with pkgs; [ noto-fonts noto-fonts-cjk noto-fonts-emoji ];
     };
 
-    programs = { home-manager.enable = true; };
+    programs = {
+      home-manager.enable = true;
+      direnv.enable = true;
+    };
   };
 
   imports = [
