@@ -19,14 +19,7 @@ in {
         modifier = "Mod4";
         terminal = "${config.terminal} -t foot-direct";
         menu = if menu == "wmenu" then "${menu}-run" else menu;
-        startup = [
-          { command = terminal; }
-          {
-            command =
-              "swaybg -i $(readlink -f /home/${config.username}/${config.configpath}/wallpaper/tokyo-night.png)";
-            always = true;
-          }
-        ];
+        startup = [{ command = terminal; }];
         colors = with config.color; {
           focused = {
             border = blue;
@@ -55,6 +48,17 @@ in {
             text = black;
             indicator = cyan;
             childBorder = yellow;
+          };
+        };
+        output = {
+          DP-1 = {
+            transform = "90";
+            bg = "${../../wallpaper/tokyo-night-vertical.jpg} fill";
+            position = "1920,0";
+          };
+          HDMI-A-2 = {
+            bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
+            position = "0,0";
           };
         };
       };
