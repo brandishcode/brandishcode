@@ -1,5 +1,7 @@
 {
   gpu = "amd";
+  display1 = "";
+  display2 = "";
   configpath = "nixos-configuration";
   username = "developer";
   hostname = "nixos";

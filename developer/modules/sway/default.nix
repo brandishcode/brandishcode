@@ -3,6 +3,11 @@ let
   inherit (import ../common.nix) browser;
   terminal = "foot";
   menu = "wmenu";
+  modifier = config.wayland.windowManager.sway.config.modifier;
+  ws = {
+    terminal = "";
+    browser = "󰈹";
+  };
 in {
   config = {
     home = {
@@ -17,9 +22,25 @@ in {
       enable = true;
       config = {
         modifier = "Mod4";
+        workspaceOutputAssign = [
+          {
+            workspace = ws.terminal;
+            output = config.display1;
+          }
+          {
+            workspace = ws.browser;
+            output = config.display2;
+          }
+        ];
+        keybindings = lib.mkOptionDefault {
+          "${modifier}+0" = "workspace ${ws.terminal}";
+          "${modifier}+9" = "workspace ${ws.browser}";
+          "${modifier}+Shift+b" = "exec firefox";
+        };
+        assigns = { "${ws.browser}" = [{ app_id = "^firefox$"; }]; };
         terminal = "${config.terminal} -t foot-direct";
         menu = if menu == "wmenu" then "${menu}-run" else menu;
-        startup = [{ command = terminal; }];
+        startup = [ { command = terminal; } { command = "firefox"; } ];
         colors = with config.color; {
           focused = {
             border = blue;
@@ -51,12 +72,12 @@ in {
           };
         };
         output = {
-          DP-1 = {
+          ${config.display1} = {
             transform = "90";
             bg = "${../../wallpaper/tokyo-night-vertical.jpg} fill";
             position = "1920,0";
           };
-          HDMI-A-2 = {
+          ${config.display2} = {
             bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
             position = "0,0";
           };

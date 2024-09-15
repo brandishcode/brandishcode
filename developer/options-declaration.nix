@@ -2,6 +2,20 @@
 
 {
   options = {
+    display1 = lib.mkOption {
+      default = "DP-1";
+      type = lib.types.str;
+      description = ''
+        Display Port
+      '';
+    };
+    display2 = lib.mkOption {
+      default = "HDMI-A-1";
+      type = lib.types.str;
+      description = ''
+        Display Port
+      '';
+    };
     gpu = lib.mkOption {
       default = "amd";
       type = lib.types.str;

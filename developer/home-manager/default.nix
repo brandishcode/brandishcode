@@ -11,7 +11,12 @@
         '';
       };
 
-      packages = with pkgs; [ noto-fonts noto-fonts-cjk noto-fonts-emoji ];
+      packages = with pkgs; [
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        nerdfonts
+      ];
     };
 
     programs = {
