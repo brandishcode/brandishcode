@@ -13,7 +13,7 @@
               name = "git";
               tags = [ "git" ];
               keyword = "git";
-              url = "https://github.com/brandishcode";
+              url = "https://github.com/brandishcode?tab=repositories";
             }
             {
               name = "nix";
