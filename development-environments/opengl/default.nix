@@ -28,6 +28,5 @@ in llvmPackages.stdenv.mkDerivation rec {
     echo "Development Shell Started"
     runPhase configurePhase
     cd ../
-    vim
   '';
 }
