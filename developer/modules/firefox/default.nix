@@ -54,6 +54,19 @@
                 }
               ];
             }
+            {
+              name = "3D";
+              bookmarks = [
+                {
+                  name = "Projection Matrix";
+                  url = "http://www.songho.ca/opengl/gl_projectionmatrix.html";
+                }
+                {
+                  name = "Learn OpenGL";
+                  url = "https://learnopengl.com/";
+                }
+              ];
+            }
           ];
         }];
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -62,7 +75,7 @@
           tokyo-night-v2
         ];
         settings = {
-          "browser.startup.homepage" = "about:blank";
+          "browser.startup.homepage" = "about:home";
           "extensions.autoDisableScopes" = 0;
           "layout.css.prefers-color-scheme.content-override" =
             0; # force to dark mode
