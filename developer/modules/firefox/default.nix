@@ -75,7 +75,7 @@
           tokyo-night-v2
         ];
         settings = {
-          "browser.startup.homepage" = "about:home";
+          "browser.startup.homepage" = "https://github.com/brandishcode";
           "extensions.autoDisableScopes" = 0;
           "layout.css.prefers-color-scheme.content-override" =
             0; # force to dark mode
