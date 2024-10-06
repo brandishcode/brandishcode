@@ -65,6 +65,11 @@
                   name = "Learn OpenGL";
                   url = "https://learnopengl.com/";
                 }
+                {
+                  name = "Grid";
+                  url =
+                    "https://asliceofrendering.com/scene%20helper/2020/01/05/InfiniteGrid/";
+                }
               ];
             }
           ];
