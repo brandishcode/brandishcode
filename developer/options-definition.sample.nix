@@ -10,4 +10,5 @@
   git.useremail = "";
   git.token = "";
   terminal = "foot";
+  musicDirectory = "";
 }

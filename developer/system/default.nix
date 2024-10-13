@@ -8,7 +8,7 @@
 
   # Include the results of the hardware scan.
   # Include home-manager
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ./audio.nix ];
 
   config = {
     # Bootloader.

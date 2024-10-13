@@ -101,5 +101,13 @@
         Color theme
       '';
     };
+
+    musicDirectory = lib.mkOption {
+      default = "";
+      type = lib.types.str;
+      description = ''
+        Music Directory for MPD
+      '';
+    };
   };
 }

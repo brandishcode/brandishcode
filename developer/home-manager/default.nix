@@ -37,6 +37,7 @@
     ../modules/sway
     ../modules/ssh
     ../modules/terminal
+    ../modules/ncmpcpp
   ];
 }
 
