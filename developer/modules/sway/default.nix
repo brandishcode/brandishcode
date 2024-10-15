@@ -2,7 +2,6 @@
 let
   inherit (import ../common.nix) browser;
   terminal = "foot";
-  menu = "wmenu";
   modifier = config.wayland.windowManager.sway.config.modifier;
   ws = {
     terminal = "";
@@ -14,7 +13,7 @@ in {
       # Override the nix installed sway by the distro installed package.
       # This is for non-NixOS distros.
       shellAliases = { sway = lib.mkIf config.nonnixos "/usr/bin/sway"; };
-      packages = with pkgs; [ pkgs.${menu} wl-clipboard swaybg ];
+      packages = with pkgs; [ wl-clipboard swaybg ];
     };
     programs = { ${browser}.enable = true; };
 
@@ -39,7 +38,7 @@ in {
         };
         assigns = { "${ws.browser}" = [{ app_id = "^firefox$"; }]; };
         terminal = "${config.terminal} -t foot-direct";
-        menu = if menu == "wmenu" then "${menu}-run" else menu;
+        menu = "rofi -show drun";
         startup = [ { command = terminal; } { command = "firefox"; } ];
         colors = with config.color; {
           focused = {

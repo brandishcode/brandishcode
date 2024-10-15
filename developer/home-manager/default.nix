@@ -38,6 +38,7 @@
     ../modules/ssh
     ../modules/terminal
     ../modules/ncmpcpp
+    ../modules/rofi
   ];
 }
 
