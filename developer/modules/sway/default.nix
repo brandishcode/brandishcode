@@ -35,6 +35,8 @@ in {
           "${modifier}+0" = "workspace ${ws.terminal}";
           "${modifier}+9" = "workspace ${ws.browser}";
           "${modifier}+Shift+b" = "exec firefox";
+          "${modifier}+Shift+0" = "move window to workspace ${ws.terminal}";
+          "${modifier}+Shift+9" = "move window to workspace ${ws.browser}";
         };
         assigns = { "${ws.browser}" = [{ app_id = "^firefox$"; }]; };
         terminal = "${config.terminal} -t foot-direct";
