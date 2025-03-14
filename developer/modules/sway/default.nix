@@ -74,7 +74,6 @@ in {
         };
         output = {
           ${config.display1} = {
-            transform = "270";
             bg = "${../../wallpaper/tokyo-night-vertical.jpg} fill";
             position = "1920,0";
           };
