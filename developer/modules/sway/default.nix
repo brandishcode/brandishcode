@@ -24,11 +24,11 @@ in {
         workspaceOutputAssign = [
           {
             workspace = ws.terminal;
-            output = config.display1;
+            output = config.display2;
           }
           {
             workspace = ws.browser;
-            output = config.display2;
+            output = config.display1;
           }
         ];
         keybindings = lib.mkOptionDefault {
@@ -41,7 +41,6 @@ in {
         assigns = { "${ws.browser}" = [{ app_id = "^firefox$"; }]; };
         terminal = "${config.terminal} -t foot-direct";
         menu = "rofi -show drun";
-        startup = [ { command = terminal; } { command = "firefox"; } ];
         colors = with config.color; {
           focused = {
             border = blue;
