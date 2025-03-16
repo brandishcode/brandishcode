@@ -41,6 +41,7 @@ in {
         assigns = { "${ws.browser}" = [{ app_id = "^firefox$"; }]; };
         terminal = "${config.terminal} -t foot-direct";
         menu = "rofi -show drun";
+        # floating.criteria = [{ class = "install4j-jclient-LoginFrame"; }];
         colors = with config.color; {
           focused = {
             border = blue;

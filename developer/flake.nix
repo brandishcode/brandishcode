@@ -12,9 +12,10 @@
 
     nixvim.url = "github:brandishcode/nixvim-configuration";
     nur.url = "github:nix-community/nur";
+    clefru-nur.url = "github:clefru/nur-packages";
   };
 
-  outputs = { nixpkgs, home-manager, nixvim, nur, ... }:
+  outputs = { nixpkgs, home-manager, nixvim, nur, clefru-nur, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -24,6 +25,7 @@
           builtins.elem (nixpkgs.lib.getName pkg) [ "tokyo-night-v2" ];
       };
       nixvim' = { home.packages = [ nixvim.packages.${system}.default ]; };
+      clefru = { home.packages = [ clefru-nur.packages.${system}.ib-tws ]; };
       options = import ./options-definition.nix;
       home-manager-options = {
         username = options.username;
@@ -46,6 +48,7 @@
             ./options-declaration.nix
             ./home-manager
             nixvim'
+            clefru
           ];
         };
       };
@@ -65,8 +68,13 @@
               # home-manager setup
               home-manager.users.${options.username} = {
                 home.stateVersion = home-manager-options.stateVersion;
-                imports =
-                  [ options ./options-declaration.nix ./home-manager nixvim' ];
+                imports = [
+                  options
+                  ./options-declaration.nix
+                  ./home-manager
+                  nixvim'
+                  clefru
+                ];
               };
             }
           ];
