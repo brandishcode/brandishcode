@@ -1,7 +1,6 @@
 { pkgs, config, lib, ... }:
 let
   inherit (import ../common.nix) browser;
-  terminal = "foot";
   modifier = config.wayland.windowManager.sway.config.modifier;
   ws = {
     terminal = "";
@@ -38,7 +37,10 @@ in {
           "${modifier}+Shift+0" = "move window to workspace ${ws.terminal}";
           "${modifier}+Shift+9" = "move window to workspace ${ws.browser}";
         };
-        assigns = { "${ws.browser}" = [{ app_id = "^firefox$"; }]; };
+        assigns = {
+          "${ws.browser}" = [{ app_id = "^firefox$"; }];
+          "${ws.terminal}" = [{ app_id = "^foot$"; }];
+        };
         terminal = "${config.terminal} -t foot-direct";
         menu = "rofi -show drun";
         # floating.criteria = [{ class = "install4j-jclient-LoginFrame"; }];

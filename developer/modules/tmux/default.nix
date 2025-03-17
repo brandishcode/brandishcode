@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
 {
-
-  home.packages = with pkgs;
-    [
-      (writeShellScriptBin "tmux-resurrect-save-hook"
-        (builtins.readFile ./scripts/tmux-resurrect-save-hook.sh))
-    ];
-
   programs = {
     bash = {
       enable = true;
@@ -25,15 +18,7 @@
         set -s copy-command 'wl-copy'
       '';
       plugins = with pkgs; [
-        {
-          plugin = tmuxPlugins.resurrect;
-          extraConfig = ''
-            set -g @resurrect-strategy-nvim 'session'
-            set -g @resurrect-strategy-vim 'session'
-            set -g @resurrect-processes '~nvim -> nvim'
-            set -g @resurrect-hook-post-save-all 'tmux-resurrect-save-hook'
-          '';
-        }
+        { plugin = tmuxPlugins.resurrect; }
         {
           plugin = tmuxPlugins.continuum;
           extraConfig = ''
