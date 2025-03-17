@@ -72,6 +72,7 @@
                   options
                   ./options-declaration.nix
                   ./home-manager
+                  ./home-manager/sway
                   nixvim'
                   clefru
                 ];

@@ -51,19 +51,25 @@
       extraGroups = [ "development" "networkmanager" "wheel" ];
     };
 
-    # SDDM and Sway setup
+    # SDDM ,and DesktopManager setup
     security.polkit.enable = true;
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
     };
-    services.displayManager = {
-      defaultSession = "sway";
-      sessionPackages = with pkgs; [ sway ];
-      sddm = {
-        theme = "tokyo-night-sddm";
+    services = {
+      displayManager = {
+        defaultSession = "plasma";
+        sessionPackages = with pkgs; [ sway ];
+        sddm = {
+          theme = "tokyo-night-sddm";
+          enable = true;
+          wayland.enable = true;
+        };
+      };
+      xserver = {
         enable = true;
-        wayland.enable = true;
+        desktopManager.plasma5.enable = true;
       };
     };
     environment.systemPackages =
