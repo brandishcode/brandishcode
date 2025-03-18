@@ -59,21 +59,19 @@
     };
     services = {
       displayManager = {
-        defaultSession = "plasma";
+        defaultSession = "sway";
         sessionPackages = with pkgs; [ sway ];
         sddm = {
-          theme = "tokyo-night-sddm";
+          theme = "sddm-astronaut-theme";
           enable = true;
           wayland.enable = true;
+          package = pkgs.kdePackages.sddm;
+          extraPackages = with pkgs; [ sddm-astronaut ];
         };
       };
-      xserver = {
-        enable = true;
-        desktopManager.plasma5.enable = true;
-      };
     };
-    environment.systemPackages =
-      [ (pkgs.libsForQt5.callPackage ../pkgs/sddm-theme.nix { }) ];
+    environment.systemPackages = with pkgs;
+      [ (sddm-astronaut.override { embeddedTheme = "japanese_aesthetic"; }) ];
 
     # key mapping
     services.keyd = {

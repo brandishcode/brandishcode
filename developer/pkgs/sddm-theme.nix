@@ -1,19 +1,19 @@
-{ qtbase, qtsvg, qtgraphicaleffects, qtquickcontrols2, wrapQtAppsHook
-, stdenvNoCC, fetchFromGitHub }:
+{ qtbase, qtsvg, qt5compat, wrapQtAppsHook, stdenvNoCC, fetchFromGitHub }:
 
 stdenvNoCC.mkDerivation {
   pname = "tokyo-night-sddm";
-  version = "1.0";
+  version = "2.0";
   dontBuild = true;
   src = fetchFromGitHub {
     owner = "brandishcode";
     repo = "tokyo-night-sddm";
-    rev = "130d5cbf8712b5cd4e691ee966379b9f3d65ca5f";
-    sha256 = "sha256-C59QyASd8QObcph0AbOqlB/GlH8v5KXTSlT5vr08V84=";
+    rev = "44dcd06feb57d9390b0a4b8b9248f53d0eeb6aef";
+    sha256 = "sha256-qY6HVBwoGbs8y4z1HTU8IbagU7BJ1yyjqn/Ginss8IE=";
   };
-  nativeBuildInputs = [ wrapQtAppsHook ];
 
-  propagatedUserEnvPkgs = [ qtbase qtsvg qtgraphicaleffects qtquickcontrols2 ];
+  buildInputs = [ qtbase ];
+  nativeBuildInputs = [ wrapQtAppsHook ];
+  propagatedUserEnvPkgs = [ qtsvg qt5compat ];
 
   installPhase = ''
     mkdir -p $out/share/sddm/themes
