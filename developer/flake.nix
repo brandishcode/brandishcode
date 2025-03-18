@@ -25,7 +25,6 @@
           builtins.elem (nixpkgs.lib.getName pkg) [ "tokyo-night-v2" ];
       };
       nixvim' = { home.packages = [ nixvim.packages.${system}.default ]; };
-      clefru = { home.packages = [ clefru-nur.packages.${system}.ib-tws ]; };
       options = import ./options-definition.nix;
       home-manager-options = {
         username = options.username;
@@ -48,7 +47,6 @@
             ./options-declaration.nix
             ./home-manager
             nixvim'
-            clefru
           ];
         };
       };
@@ -64,6 +62,10 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit system;
+                inherit clefru-nur;
+              };
 
               # home-manager setup
               home-manager.users.${options.username} = {
@@ -74,7 +76,7 @@
                   ./home-manager
                   ./home-manager/sway
                   nixvim'
-                  clefru
+                  ./nurs
                 ];
               };
             }
