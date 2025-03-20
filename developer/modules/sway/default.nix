@@ -23,11 +23,11 @@ in {
         workspaceOutputAssign = [
           {
             workspace = ws.terminal;
-            output = config.display2;
+            output = config.display1;
           }
           {
             workspace = ws.browser;
-            output = config.display1;
+            output = config.display2;
           }
         ];
         keybindings = lib.mkOptionDefault {
@@ -76,12 +76,16 @@ in {
         };
         output = {
           ${config.display1} = {
-            bg = "${../../wallpaper/tokyo-night-vertical.jpg} fill";
-            position = "1920,0";
+            bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
+            position = "0,0";
           };
           ${config.display2} = {
             bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
-            position = "0,0";
+            position = "1920,0";
+          };
+          ${config.display3} = {
+            bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
+            position = "0,1080";
           };
         };
       };

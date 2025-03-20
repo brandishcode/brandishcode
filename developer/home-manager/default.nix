@@ -38,6 +38,7 @@
     ../modules/terminal
     ../modules/ncmpcpp
     ../modules/rofi
+    ../modules/chromium
   ];
 }
 
