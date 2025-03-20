@@ -24,7 +24,23 @@
         config.allowUnfreePredicate = pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [ "tokyo-night-v2" ];
       };
-      nixvim' = { home.packages = [ nixvim.packages.${system}.default ]; };
+      nixvim' = {
+        home.packages = [
+          (nixvim.packages.${system}.default.extend {
+            imports = [ nixvim.nixvim-configs.${system}.js ];
+          })
+        ];
+      };
+      nixvimjs' = {
+        home.packages = [
+          (nixvim.packages.${system}.js.overrideAttrs (oldAttrs: {
+            ignoreCollisions = true;
+            postInstall = oldAttrs.postInstall or "" + ''
+              mv $out/bin/nvim $out/bin/nvim-js
+            '';
+          }))
+        ];
+      };
       options = import ./options-definition.nix;
       home-manager-options = {
         username = options.username;
@@ -76,6 +92,7 @@
                   ./home-manager
                   ./home-manager/sway
                   nixvim'
+                  nixvimjs'
                   ./nurs
                 ];
               };
