@@ -5,6 +5,7 @@ let
   ws = {
     terminal = "";
     browser = "󰈹";
+    dev-browser = "";
   };
 in {
   config = {
@@ -29,17 +30,24 @@ in {
             workspace = ws.browser;
             output = config.display2;
           }
+          {
+            workspace = ws.dev-browser;
+            output = config.display3;
+          }
         ];
         keybindings = lib.mkOptionDefault {
           "${modifier}+0" = "workspace ${ws.terminal}";
           "${modifier}+9" = "workspace ${ws.browser}";
+          "${modifier}+8" = "workspace ${ws.dev-browser}";
           "${modifier}+Shift+b" = "exec firefox";
           "${modifier}+Shift+0" = "move window to workspace ${ws.terminal}";
           "${modifier}+Shift+9" = "move window to workspace ${ws.browser}";
+          "${modifier}+Shift+8" = "move window to workspace ${ws.dev-browser}";
         };
         assigns = {
           "${ws.browser}" = [{ app_id = "^firefox$"; }];
           "${ws.terminal}" = [{ app_id = "^foot$"; }];
+          "${ws.dev-browser}" = [{ app_id = "^chromium-browser$"; }];
         };
         terminal = "${config.terminal} -t foot-direct";
         menu = "rofi -show drun";
@@ -81,7 +89,7 @@ in {
           };
           ${config.display2} = {
             bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
-            position = "1920,0";
+            position = "1920,216";
           };
           ${config.display3} = {
             bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
