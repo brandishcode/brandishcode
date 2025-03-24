@@ -8,11 +8,14 @@
 
   # Include the results of the hardware scan.
   # Include home-manager
-  imports = [ ./hardware-configuration.nix ./audio.nix ];
+  imports = [ ./hardware-configuration.nix ./audio.nix ./security.nix ];
 
   config = {
     # Bootloader.
-    boot.loader.systemd-boot.enable = true;
+    boot.loader.systemd-boot = {
+      enable = true;
+      extraEntries = config.systemd-boot-entry1;
+    };
     boot.loader.efi.canTouchEfiVariables = true;
     networking.hostName = config.hostname; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

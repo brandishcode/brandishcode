@@ -2,6 +2,14 @@
 
 {
   options = {
+    systemd-boot-entry1 = lib.mkOption {
+      default = { };
+      type = lib.types.attrs;
+      description = ''
+        systemd-boot entry for other os
+      '';
+    };
+
     display1 = lib.mkOption {
       default = "DP-2";
       type = lib.types.str;

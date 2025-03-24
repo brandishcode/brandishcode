@@ -12,4 +12,5 @@
   git.token = "";
   terminal = "foot";
   musicDirectory = "";
+  systemd-boot-entry1 = { };
 }
