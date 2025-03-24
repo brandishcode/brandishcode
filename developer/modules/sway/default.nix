@@ -8,6 +8,7 @@ let
     dev-browser = "";
   };
 in {
+  imports = [ ./swayidle.nix ./swaylock.nix ];
   config = {
     home = {
       # Override the nix installed sway by the distro installed package.
@@ -43,6 +44,7 @@ in {
           "${modifier}+Shift+0" = "move window to workspace ${ws.terminal}";
           "${modifier}+Shift+9" = "move window to workspace ${ws.browser}";
           "${modifier}+Shift+8" = "move window to workspace ${ws.dev-browser}";
+          "${modifier}+Shift+l" = "exec swaylock";
         };
         assigns = {
           "${ws.browser}" = [{ app_id = "^firefox$"; }];

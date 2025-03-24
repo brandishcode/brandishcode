@@ -1,0 +1,1 @@
+{ services.swayidle = { enable = true; }; }
