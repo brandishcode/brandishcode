@@ -1,83 +1,86 @@
 { pkgs, config, lib, ... }: {
-  imports = [ ./display.nix ./swayidle.nix ./swaylock.nix ];
-  config = {
-    home = {
-      # Override the nix installed sway by the distro installed package.
-      # This is for non-NixOS distros.
-      shellAliases = { sway = lib.mkIf config.nonnixos "/usr/bin/sway"; };
-      packages = with pkgs; [ wl-clipboard swaybg ];
-    };
-    wayland.windowManager.sway = let
-      ws = {
-        terminal = "";
-        browser = "󰈹";
-        dev-browser = "";
+  config = lib.mkIf (config.desktopEnvironment.sway) {
+    security.polkit.enable = true;
+    home-manager.users.${config.username} = {
+      imports = [ ./display.nix ./swayidle.nix ./swaylock.nix ];
+      home = {
+        # Override the nix installed sway by the distro installed package.
+        # This is for non-NixOS distros.
+        shellAliases = { sway = lib.mkIf config.nonnixos "/usr/bin/sway"; };
+        packages = with pkgs; [ wl-clipboard swaybg ];
       };
-      modifier = config.wayland.windowManager.sway.config.modifier;
-    in {
-      enable = true;
-      config = {
+      wayland.windowManager.sway = let
+        workspaceIcons = config.icons;
         modifier = "Mod4";
-        workspaceOutputAssign = [
-          {
-            workspace = ws.terminal;
-            output = config.display1;
-          }
-          {
-            workspace = ws.browser;
-            output = config.display2;
-          }
-          {
-            workspace = ws.dev-browser;
-            output = config.display3;
-          }
-        ];
-        keybindings = lib.mkOptionDefault {
-          "${modifier}+0" = "workspace ${ws.terminal}";
-          "${modifier}+9" = "workspace ${ws.browser}";
-          "${modifier}+8" = "workspace ${ws.dev-browser}";
-          "${modifier}+Shift+b" = "exec firefox";
-          "${modifier}+Shift+0" = "move window to workspace ${ws.terminal}";
-          "${modifier}+Shift+9" = "move window to workspace ${ws.browser}";
-          "${modifier}+Shift+8" = "move window to workspace ${ws.dev-browser}";
-          "${modifier}+Shift+l" = "exec swaylock";
-        };
-        assigns = {
-          "${ws.browser}" = [{ app_id = "^firefox$"; }];
-          "${ws.terminal}" = [{ app_id = "^foot$"; }];
-          "${ws.dev-browser}" = [{ app_id = "^chromium-browser$"; }];
-        };
-        terminal = "${config.terminal} -t foot-direct";
-        menu = "rofi -show drun";
-        # floating.criteria = [{ class = "install4j-jclient-LoginFrame"; }];
-        colors = with config.color; {
-          focused = {
-            border = blue;
-            background = brightblack;
-            text = brightwhite;
-            indicator = cyan;
-            childBorder = blue;
+      in {
+        enable = true;
+        config = {
+          inherit modifier;
+          workspaceOutputAssign = [
+            {
+              workspace = workspaceIcons.terminal;
+              output = config.display1;
+            }
+            {
+              workspace = workspaceIcons.browser;
+              output = config.display2;
+            }
+            {
+              workspace = workspaceIcons.devBrowser;
+              output = config.display3;
+            }
+          ];
+          keybindings = lib.mkOptionDefault {
+            "${modifier}+0" = "workspace ${workspaceIcons.terminal}";
+            "${modifier}+9" = "workspace ${workspaceIcons.browser}";
+            "${modifier}+8" = "workspace ${workspaceIcons.devBrowser}";
+            "${modifier}+Shift+b" = "exec firefox";
+            "${modifier}+Shift+0" =
+              "move window to workspace ${workspaceIcons.terminal}";
+            "${modifier}+Shift+9" =
+              "move window to workspace ${workspaceIcons.browser}";
+            "${modifier}+Shift+8" =
+              "move window to workspace ${workspaceIcons.devBrowser}";
+            "${modifier}+Shift+l" = "exec swaylock";
           };
-          focusedInactive = {
-            border = blue;
-            background = brightblack;
-            text = brightwhite;
-            indicator = cyan;
-            childBorder = blue;
+          assigns = {
+            "${workspaceIcons.browser}" = [{ app_id = "^firefox$"; }];
+            "${workspaceIcons.terminal}" = [{ app_id = "^foot$"; }];
+            "${workspaceIcons.devBrowser}" =
+              [{ app_id = "^chromium-browser$"; }];
           };
-          unfocused = {
-            border = brightblack;
-            background = black;
-            text = white;
-            indicator = cyan;
-            childBorder = brightblack;
-          };
-          urgent = {
-            border = yellow;
-            background = yellow;
-            text = black;
-            indicator = cyan;
-            childBorder = yellow;
+          terminal = "${config.terminal} -t foot-direct";
+          menu = "rofi -show drun";
+          # floating.criteria = [{ class = "install4j-jclient-LoginFrame"; }];
+          colors = with config.color; {
+            focused = {
+              border = blue;
+              background = brightblack;
+              text = brightwhite;
+              indicator = cyan;
+              childBorder = blue;
+            };
+            focusedInactive = {
+              border = blue;
+              background = brightblack;
+              text = brightwhite;
+              indicator = cyan;
+              childBorder = blue;
+            };
+            unfocused = {
+              border = brightblack;
+              background = black;
+              text = white;
+              indicator = cyan;
+              childBorder = brightblack;
+            };
+            urgent = {
+              border = yellow;
+              background = yellow;
+              text = black;
+              indicator = cyan;
+              childBorder = yellow;
+            };
           };
         };
       };

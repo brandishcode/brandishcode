@@ -1,19 +1,5 @@
-{ lib, ... }:
-let
-  desktopEnvironmentTypes =
-    (import ./types/desktop-environment-types.nix { inherit lib; });
-in {
+{ lib, ... }: {
   options = {
-    desktopEnvironment = {
-      enable = lib.mkEnableOption "Desktop Environment";
-      app = with desktopEnvironmentTypes;
-        lib.mkOption {
-          default = "sway";
-          type = desktopEnvironmentType;
-          description = ''
-            Which desktop environment to use;
-          '';
-        };
-    };
+    desktopEnvironment = { sway = lib.mkEnableOption "Sway window manager"; };
   };
 }
