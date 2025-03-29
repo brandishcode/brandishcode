@@ -1,3 +1,7 @@
+# personal configuration files
+developer/configurations/*
+!developer/configurations/default.nix
+
 **/options-definition.nix
 
 # For testing nix builds

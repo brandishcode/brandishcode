@@ -1,14 +1,5 @@
-{ pkgs, config, lib, ... }:
-let
-  inherit (import ../common.nix) browser;
-  modifier = config.wayland.windowManager.sway.config.modifier;
-  ws = {
-    terminal = "";
-    browser = "󰈹";
-    dev-browser = "";
-  };
-in {
-  imports = [ ./swayidle.nix ./swaylock.nix ];
+{ pkgs, config, lib, ... }: {
+  imports = [ ./display.nix ./swayidle.nix ./swaylock.nix ];
   config = {
     home = {
       # Override the nix installed sway by the distro installed package.
@@ -16,9 +7,14 @@ in {
       shellAliases = { sway = lib.mkIf config.nonnixos "/usr/bin/sway"; };
       packages = with pkgs; [ wl-clipboard swaybg ];
     };
-    programs = { ${browser}.enable = true; };
-
-    wayland.windowManager.sway = {
+    wayland.windowManager.sway = let
+      ws = {
+        terminal = "";
+        browser = "󰈹";
+        dev-browser = "";
+      };
+      modifier = config.wayland.windowManager.sway.config.modifier;
+    in {
       enable = true;
       config = {
         modifier = "Mod4";
@@ -82,20 +78,6 @@ in {
             text = black;
             indicator = cyan;
             childBorder = yellow;
-          };
-        };
-        output = {
-          ${config.display1} = {
-            bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
-            position = "0,0";
-          };
-          ${config.display2} = {
-            bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
-            position = "1920,216";
-          };
-          ${config.display3} = {
-            bg = "${../../wallpaper/tokyo-night-horizontal.jpg} fill";
-            position = "0,1080";
           };
         };
       };

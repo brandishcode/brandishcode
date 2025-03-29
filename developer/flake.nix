@@ -2,7 +2,6 @@
   description = "Graphical nix configuration";
 
   inputs = {
-
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -31,16 +30,6 @@
             (nixvim.packages.${system}.default.extend {
               imports = [ nixvim.nixvim-configs.${system}.js ];
             })
-          ];
-        };
-        nixvimjs' = {
-          home.packages = [
-            (nixvim.packages.${system}.js.overrideAttrs (oldAttrs: {
-              ignoreCollisions = true;
-              postInstall = oldAttrs.postInstall or "" + ''
-                mv $out/bin/nvim $out/bin/nvim-js
-              '';
-            }))
           ];
         };
         options = import ./options-definition.nix;
@@ -75,10 +64,12 @@
               nixpkgs.lib.nixosSystem {
                 inherit pkgs;
                 modules = [
+                  home-manager.nixosModules.home-manager
                   options
                   ./options-declaration.nix
+                  ./options
                   ./system
-                  home-manager.nixosModules.home-manager
+                  ./desktop-environment
                   {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
@@ -86,17 +77,15 @@
                       inherit system;
                       inherit clefru-nur;
                     };
-
                     # home-manager setup
                     home-manager.users.${options.username} = {
                       home.stateVersion = home-manager-options.stateVersion;
                       imports = [
                         options
                         ./options-declaration.nix
+                        ./configurations
                         ./home-manager
-                        ./home-manager/sway
                         nixvim'
-                        nixvimjs'
                         ./nurs
                       ];
                     };
