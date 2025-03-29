@@ -1,21 +1,6 @@
-{ lib, ... }:
-let
-  desktopEnvironmentTypes =
-    (import ./types/desktop-environment-types.nix { inherit lib; });
+{ config, ... }:
+let imports = [ ./hardware-options.nix ./desktop-environment-options.nix ];
 in {
-  options = {
-    desktopEnvironment = {
-      enable = lib.mkEnableOption "Desktop Environment";
-      app = with desktopEnvironmentTypes;
-        lib.mkOption {
-          default = "sway";
-          type = desktopEnvironmentType;
-          description = ''
-            Which desktop environment to use;
-          '';
-        };
-    };
-  };
-
-  imports = [ ../desktop-environment/options ];
+  inherit imports;
+  home-manager.users.${config.username} = { inherit imports; };
 }

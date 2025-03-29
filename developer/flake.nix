@@ -84,7 +84,6 @@
                       imports = [
                         options
                         ./options-declaration.nix
-                        ./options
                         ./configurations
                         ./home-manager
                         nixvim'
