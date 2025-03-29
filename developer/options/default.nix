@@ -4,13 +4,18 @@ let
     (import ./types/desktop-environment-types.nix { inherit lib; });
 in {
   options = {
-    desktopEnvironment = with desktopEnvironmentTypes;
-      lib.mkOption {
-        default = "sway";
-        type = desktopEnvironmentType;
-        description = ''
-          Which desktop environment to use;
-        '';
-      };
+    desktopEnvironment = {
+      enable = lib.mkEnableOption "Desktop Environment";
+      app = with desktopEnvironmentTypes;
+        lib.mkOption {
+          default = "sway";
+          type = desktopEnvironmentType;
+          description = ''
+            Which desktop environment to use;
+          '';
+        };
+    };
   };
+
+  imports = [ ../desktop-environment/options ];
 }

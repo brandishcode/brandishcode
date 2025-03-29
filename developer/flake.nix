@@ -68,6 +68,7 @@
                   options
                   ./options-declaration.nix
                   ./options
+                  ./configurations
                   ./system
                   ./desktop-environment
                   {
@@ -83,6 +84,7 @@
                       imports = [
                         options
                         ./options-declaration.nix
+                        ./options
                         ./configurations
                         ./home-manager
                         nixvim'
