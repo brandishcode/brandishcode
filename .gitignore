@@ -1,6 +1,9 @@
 # personal configuration files
 developer/configurations/*
 !developer/configurations/default.nix
+!developer/configurations/icon.nix
+!developer/configurations/desktop-environment.nix
+!developer/configurations/display.nix
 
 **/options-definition.nix
 

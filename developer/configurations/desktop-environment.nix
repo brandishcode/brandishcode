@@ -1,0 +1,1 @@
+{ desktopEnvironment = { sway = true; }; }

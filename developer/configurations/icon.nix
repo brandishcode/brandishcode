@@ -1,0 +1,7 @@
+{
+  icons = {
+    terminal = "";
+    browser = "󰈹";
+    devBrowser = "";
+  };
+}
