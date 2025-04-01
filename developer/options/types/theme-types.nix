@@ -10,4 +10,12 @@ in with helperErrorMessages; {
       assert lib.assertMsg (lib.isString x) (errorMessage name "string");
       true;
   };
+
+  wallpaperType = lib.mkOptionType rec {
+    name = "monitor-wallpaper";
+    description = "Path to your wallpaper";
+    check = x:
+      assert lib.assertMsg (lib.isPath x) (errorMessageType name "path");
+      true;
+  };
 }

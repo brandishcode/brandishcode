@@ -15,7 +15,7 @@
           defaultSession = "sway";
           sessionPackages = with pkgs; [ sway ];
         })
-        {
+        (lib.mkIf (config.desktopEnvironment.displayManager == "sddm") {
           sddm = {
             theme = "sddm-astronaut-theme";
             enable = true;
@@ -23,10 +23,14 @@
             package = pkgs.kdePackages.sddm;
             extraPackages = with pkgs; [ sddm-astronaut ];
           };
-        }
+        })
       ];
     };
     environment.systemPackages = with pkgs;
-      [ (sddm-astronaut.override { embeddedTheme = "japanese_aesthetic"; }) ];
+      [
+        (sddm-astronaut.override {
+          themeConfig = { Background = "${config.theme.wallpaper}"; };
+        })
+      ];
   };
 }
