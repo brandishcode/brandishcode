@@ -1,1 +1,6 @@
-{ desktopEnvironment = { sway = true; }; }
+{
+  desktopEnvironment = {
+    sway = true;
+    displayManager = "sddm";
+  };
+}

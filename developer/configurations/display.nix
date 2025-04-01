@@ -1,4 +1,6 @@
-let wallpaper = ./wallpaper/tokyo-night-horizontal.jpg;
+let
+  theme = (import ./theme.nix).theme;
+  wallpaper = theme.wallpaper;
 in {
   monitor = [
     {
