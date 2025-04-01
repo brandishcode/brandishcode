@@ -10,7 +10,7 @@
         packages = with pkgs; [ wl-clipboard swaybg ];
       };
       wayland.windowManager.sway = let
-        workspaceIcons = config.icons;
+        workspaceIcons = config.theme.icons;
         modifier = "Mod4";
       in {
         enable = true;

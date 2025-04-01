@@ -1,6 +1,9 @@
 { lib }:
-let helpersErrorMessages = (import ../../../helpers/error-messages { });
-in with helpersErrorMessages; rec {
+let
+  helpersErrorMessages = (import ../../../helpers/error-messages { });
+  themeTypes = (import ./theme-types.nix { inherit lib; });
+in with helpersErrorMessages;
+with themeTypes; rec {
   monitorOutputPortType = lib.mkOptionType rec {
     name = "monitor-output-port";
     description = ''
@@ -27,14 +30,7 @@ in with helpersErrorMessages; rec {
       true;
   };
 
-  monitorWallpaperType = lib.mkOptionType rec {
-    name = "monitor-wallpaper";
-    description = "Path to your wallpaper";
-    check = x:
-      assert lib.assertMsg (lib.isPath x) (errorMessageType name "path");
-      true;
-  };
-
+  monitorWallpaperType = wallpaperType;
   monitorType = lib.mkOptionType rec {
     name = "monitor";
     description = ''
