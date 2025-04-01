@@ -51,7 +51,7 @@
     users.users.${config.username} = {
       isNormalUser = true;
       description = "Developer user";
-      extraGroups = [ "development" "networkmanager" "wheel" ];
+      extraGroups = [ "development" "networkmanager" "wheel" "dialout" ];
     };
 
     # SDDM ,and DesktopManager setup
@@ -126,6 +126,7 @@
         sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.username}/${config.configpath}/#developer@${config.hostname})"
       '';
     };
+    services.udev.packages = with pkgs; [ vial via ];
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
