@@ -27,7 +27,7 @@
       ];
     };
     environment.systemPackages = with pkgs;
-      [
+      lib.mkIf (config.desktopEnvironment.displayManager == "sddm") [
         (sddm-astronaut.override {
           themeConfig = { Background = "${config.theme.wallpaper}"; };
         })
