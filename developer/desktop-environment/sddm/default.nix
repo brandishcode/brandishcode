@@ -8,29 +8,26 @@
       NIXOS_OZONE_WL = "1";
     };
 
-    services = let
-    in {
-      displayManager = lib.mkMerge [
+    services.displayManager =
+      lib.mkIf config.desktopEnvironment.displayManager.enable (lib.mkMerge [
         (lib.mkIf config.desktopEnvironment.sway {
           defaultSession = "sway";
-          sessionPackages = with pkgs; [ sway ];
+          sessionPackages = [ pkgs.sway ];
         })
-        (lib.mkIf (config.desktopEnvironment.displayManager == "sddm") {
-          sddm = {
-            theme = "sddm-astronaut-theme";
-            enable = true;
-            wayland.enable = true;
-            package = pkgs.kdePackages.sddm;
-            extraPackages = with pkgs; [ sddm-astronaut ];
-          };
-        })
-      ];
-    };
-    environment.systemPackages = with pkgs;
-      lib.mkIf (config.desktopEnvironment.displayManager == "sddm") [
-        (sddm-astronaut.override {
-          themeConfig = { Background = "${config.theme.wallpaper}"; };
-        })
-      ];
+        (with config.desktopEnvironment;
+          lib.mkIf (displayManager.name == "sddm") {
+            sddm = {
+              theme = displayManager.extraConfig.themeName;
+              enable = true;
+              wayland.enable = true;
+              package = pkgs.kdePackages.sddm;
+              extraPackages = displayManager.extraConfig.qtPackages;
+            };
+          })
+      ]);
+    environment.systemPackages = with config.desktopEnvironment;
+      lib.mkIf (displayManager.name == "sddm"
+        && (lib.hasAttr "extraConfig" displayManager))
+      displayManager.extraConfig.themePackages;
   };
 }

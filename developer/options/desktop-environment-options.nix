@@ -7,7 +7,10 @@ in {
     desktopEnvironment = with displayManagerTypes; {
       sway = lib.mkEnableOption "Sway window manager";
       displayManager = lib.mkOption {
-        default = "sddm";
+        default = {
+          enable = true;
+          name = "sddm";
+        };
         type = displayManagerType;
       };
     };
