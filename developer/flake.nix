@@ -39,13 +39,14 @@
           stateVersion = "25.05";
         };
         lib = pkgs.lib;
-        myLib = (import ./helpers/type-checker.nix { inherit lib; });
+        myLib = (import ./helpers/type-checker.nix { inherit lib; })
+          // (import ./helpers/sway.nix);
         myTypes = (import ./types/monitor-types.nix { inherit lib; })
           // (import ./types/theme-types.nix { inherit lib; })
           // (import ./types/display-manager-types.nix {
             inherit lib;
             inherit myLib;
-          });
+          }) // (import ./types/workspace-types.nix { inherit lib; });
       in {
         packages = {
           homeConfigurations = {

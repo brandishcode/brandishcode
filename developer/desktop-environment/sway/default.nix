@@ -16,20 +16,6 @@
         enable = true;
         config = {
           inherit modifier;
-          workspaceOutputAssign = [
-            {
-              workspace = workspaceIcons.terminal;
-              output = config.display1;
-            }
-            {
-              workspace = workspaceIcons.browser;
-              output = config.display2;
-            }
-            {
-              workspace = workspaceIcons.devBrowser;
-              output = config.display3;
-            }
-          ];
           keybindings = lib.mkOptionDefault {
             "${modifier}+0" = "workspace ${workspaceIcons.terminal}";
             "${modifier}+9" = "workspace ${workspaceIcons.browser}";
