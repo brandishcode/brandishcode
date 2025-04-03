@@ -1,7 +1,7 @@
 { pkgs }:
 let
-  theme = (import ./theme.nix).theme;
-  wallpaper = theme.wallpaper;
+  inherit ((import ./theme.nix).theme) wallpaper icons;
+  inherit (import ./display.nix) monitor;
   sddm-astronaut-custom = pkgs.sddm-astronaut.override {
     themeConfig = {
       Background = "${wallpaper}";
@@ -20,5 +20,19 @@ in {
         qtPackages = [ pkgs.kdePackages.qtmultimedia ];
       };
     };
+    workspaces = [
+      {
+        label = icons.terminal;
+        inherit (builtins.elemAt monitor 0) output;
+      }
+      {
+        label = icons.browser;
+        inherit (builtins.elemAt monitor 1) output;
+      }
+      {
+        label = icons.devBrowser;
+        inherit (builtins.elemAt monitor 2) output;
+      }
+    ];
   };
 }
