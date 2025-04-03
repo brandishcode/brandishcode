@@ -10,7 +10,7 @@ let
   };
 in {
   desktopEnvironment = {
-    sway = false;
+    sway = true;
     displayManager = {
       enable = true;
       name = "sddm";
