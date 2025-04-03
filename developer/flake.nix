@@ -36,7 +36,7 @@
         home-manager-options = {
           username = options.username;
           homeDirectory = "/home/${options.username}";
-          stateVersion = "24.05";
+          stateVersion = "25.05";
         };
         lib = pkgs.lib;
         myLib = (import ./helpers/type-checker.nix { inherit lib; });
@@ -71,11 +71,13 @@
             "${options.username}@${options.hostname}" =
               nixpkgs.lib.nixosSystem {
                 inherit pkgs;
-                extraArgs = {
-                  inherit myLib;
-                  inherit myTypes;
-                };
                 modules = [
+                  {
+                    _module.args = {
+                      inherit myLib;
+                      inherit myTypes;
+                    };
+                  }
                   home-manager.nixosModules.home-manager
                   options
                   ./options-declaration.nix
