@@ -38,6 +38,14 @@
           homeDirectory = "/home/${options.username}";
           stateVersion = "24.05";
         };
+        lib = pkgs.lib;
+        myLib = (import ./helpers/type-checker.nix { inherit lib; });
+        myTypes = (import ./types/monitor-types.nix { inherit lib; })
+          // (import ./types/theme-types.nix { inherit lib; })
+          // (import ./types/display-manager-types.nix {
+            inherit lib;
+            inherit myLib;
+          });
       in {
         packages = {
           homeConfigurations = {
@@ -63,6 +71,10 @@
             "${options.username}@${options.hostname}" =
               nixpkgs.lib.nixosSystem {
                 inherit pkgs;
+                extraArgs = {
+                  inherit myLib;
+                  inherit myTypes;
+                };
                 modules = [
                   home-manager.nixosModules.home-manager
                   options
@@ -77,6 +89,8 @@
                     home-manager.extraSpecialArgs = {
                       inherit system;
                       inherit clefru-nur;
+                      inherit myLib;
+                      inherit myTypes;
                     };
                     # home-manager setup
                     home-manager.users.${options.username} = {

@@ -1,17 +1,16 @@
-{ lib, ... }:
+{ lib, myTypes, ... }:
 let
-  displayManagerTypes =
-    (import ./types/display-manager-types.nix { inherit lib; });
+
 in {
   options = {
-    desktopEnvironment = with displayManagerTypes; {
+    desktopEnvironment = {
       sway = lib.mkEnableOption "Sway window manager";
       displayManager = lib.mkOption {
         default = {
           enable = true;
           name = "sddm";
         };
-        type = displayManagerType;
+        type = myTypes.displayManagerType;
       };
     };
   };

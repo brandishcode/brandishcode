@@ -1,29 +1,26 @@
-{ lib, ... }:
+{ lib, myTypes, ... }:
 
-let
-  inherit (import ./types/theme-types.nix { inherit lib; })
-    iconType wallpaperType;
-in {
+{
   options = {
     theme = {
       icons = {
         terminal = lib.mkOption {
           default = "TERMINAL";
-          type = iconType;
+          type = myTypes.iconType;
           description = ''
             Terminal icon
           '';
         };
         browser = lib.mkOption {
           default = "BROWSER";
-          type = iconType;
+          type = myTypes.iconType;
           description = ''
             Browser icon
           '';
         };
         devBrowser = lib.mkOption {
           default = "DEV-BROWSER";
-          type = iconType;
+          type = myTypes.iconType;
           description = ''
             Development Browser icon
           '';
@@ -31,7 +28,7 @@ in {
       };
       wallpaper = lib.mkOption {
         default = ./wallpaper/mountain_esborn_pixabay.jpg;
-        type = wallpaperType;
+        type = myTypes.wallpaperType;
         description = ''
           Wallpaper image JPEG, PNG
         '';
