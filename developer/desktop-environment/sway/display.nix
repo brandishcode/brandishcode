@@ -1,10 +1,14 @@
-{ config, ... }:
+{ config, myLib, ... }:
 
 {
   config = {
     wayland.windowManager.sway = {
-      config = let helpers = import ./helpers;
-      in { output = helpers.convertToSwayOutput config.monitor; };
+      config = {
+        output = myLib.monitorToSwayOutput config.monitor;
+        workspaceOutputAssign =
+          myLib.desktopEnvironmentWorkspacesToSwayOutputAssign
+          config.desktopEnvironment.workspaces;
+      };
     };
   };
 }
