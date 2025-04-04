@@ -16,6 +16,8 @@ in {
         default = [{
           label = "TERMINAL";
           output = "DP-1";
+          shortcut = 0;
+          apps = [ "firefox" ];
         }];
         type = lib.types.listOf myTypes.workspaceType;
       };
