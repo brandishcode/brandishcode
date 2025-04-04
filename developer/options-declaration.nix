@@ -10,27 +10,6 @@
       '';
     };
 
-    display1 = lib.mkOption {
-      default = "DP-2";
-      type = lib.types.str;
-      description = ''
-        Display Port
-      '';
-    };
-    display2 = lib.mkOption {
-      default = "DP-3";
-      type = lib.types.str;
-      description = ''
-        Display Port
-      '';
-    };
-    display3 = lib.mkOption {
-      default = "HDMI-A-1";
-      type = lib.types.str;
-      description = ''
-        HDMI Port
-      '';
-    };
     gpu = lib.mkOption {
       default = "amd";
       type = lib.types.str;
