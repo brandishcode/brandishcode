@@ -1,6 +1,8 @@
 # personal configuration files
-developer/configurations/*
-!developer/configurations/default.nix
+# developer/configurations/*
+# !developer/configurations/default.nix
+# !developer/configurations/theme.nix
+# !developer/configurations/desktop/default.nix
 
 **/options-definition.nix
 

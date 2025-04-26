@@ -1,7 +1,6 @@
 { lib, myTypes, ... }:
-let
 
-in {
+{
   options = {
     desktopEnvironment = {
       sway = lib.mkEnableOption "Sway window manager";

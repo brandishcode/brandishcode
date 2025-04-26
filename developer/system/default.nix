@@ -14,7 +14,7 @@
     # Bootloader.
     boot.loader.systemd-boot = {
       enable = true;
-      extraEntries = config.systemd-boot-entry1;
+      # extraEntries = config.systemd-boot-entry1;
     };
     boot.loader.efi.canTouchEfiVariables = true;
     networking.hostName = config.hostname; # Define your hostname.
