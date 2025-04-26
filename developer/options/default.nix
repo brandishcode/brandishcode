@@ -1,6 +1,7 @@
 { config, ... }:
 let
   imports = [
+    ./user.nix
     ./hardware-options.nix
     ./desktop-environment-options.nix
     ./theme-options.nix

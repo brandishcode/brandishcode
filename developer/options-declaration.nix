@@ -10,14 +10,6 @@
       '';
     };
 
-    gpu = lib.mkOption {
-      default = "amd";
-      type = lib.types.str;
-      description = ''
-        Graphic card used
-      '';
-    };
-
     configpath = lib.mkOption {
       default = "nixos-configuration";
       type = lib.types.str;

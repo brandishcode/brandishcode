@@ -2,6 +2,13 @@
 
 {
   options = {
+    gpu = lib.mkOption {
+      default = "amd";
+      description = ''
+        Graphics Card
+      '';
+      type = lib.types.string;
+    };
     monitor = lib.mkOption {
       default = [{
         output = "DP-1";
@@ -13,7 +20,7 @@
       }];
       type = lib.types.listOf myTypes.monitorType;
       description = ''
-        List of monitor properties;
+        List of monitor properties
       '';
     };
   };

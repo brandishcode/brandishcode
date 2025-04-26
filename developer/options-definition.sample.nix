@@ -1,8 +1,4 @@
 {
-  gpu = "amd";
-  display1 = "";
-  display2 = "";
-  display3 = "";
   configpath = "nixos-configuration";
   username = "developer";
   hostname = "nixos";
