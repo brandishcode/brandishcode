@@ -1,6 +1,6 @@
 {
   theme = {
-    wallpaper = ./wallpaper/mountain_esborn_pixabay.jpg;
+    wallpaper = ../options/wallpaper/mountain_esborn_pixabay.jpg;
     icons = {
       terminal = "";
       browser = "󰈹";
