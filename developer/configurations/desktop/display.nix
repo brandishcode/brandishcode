@@ -1,7 +1,6 @@
-let
-  theme = (import ../theme.nix).theme;
-  wallpaper = theme.wallpaper;
-in {
+{ wallpaper }:
+
+{
   monitor = [
     {
       output = "DP-2";

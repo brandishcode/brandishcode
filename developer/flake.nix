@@ -49,6 +49,10 @@
             inherit lib;
             inherit myLib;
           });
+        myArgs = {
+          inherit myLib;
+          inherit myTypes;
+        };
       in {
         packages = {
           homeConfigurations = {
@@ -75,12 +79,7 @@
               nixpkgs.lib.nixosSystem {
                 inherit pkgs;
                 modules = [
-                  {
-                    _module.args = {
-                      inherit myLib;
-                      inherit myTypes;
-                    };
-                  }
+                  { _module.args = myArgs; }
                   home-manager.nixosModules.home-manager
                   options
                   ./options-declaration.nix
@@ -94,9 +93,7 @@
                     home-manager.extraSpecialArgs = {
                       inherit system;
                       inherit clefru-nur;
-                      inherit myLib;
-                      inherit myTypes;
-                    };
+                    } // myArgs;
                     # home-manager setup
                     home-manager.users.${options.username} = {
                       home.stateVersion = home-manager-options.stateVersion;

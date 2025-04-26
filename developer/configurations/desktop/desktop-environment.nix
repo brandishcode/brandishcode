@@ -1,25 +1,7 @@
-{ pkgs }:
-let
-  inherit ((import ../theme.nix).theme) wallpaper icons;
-  inherit (import ./display.nix) monitor;
-  sddm-astronaut-custom = pkgs.sddm-astronaut.override {
-    themeConfig = {
-      Background = "${wallpaper}";
-      FormPosition = "left";
-    };
-  };
-in {
+{ pkgs, icons, monitor }:
+
+{
   desktopEnvironment = {
-    sway = true;
-    displayManager = {
-      enable = true;
-      name = "sddm";
-      extraConfig = {
-        themePackages = [ sddm-astronaut-custom ];
-        themeName = "sddm-astronaut-theme";
-        qtPackages = [ pkgs.kdePackages.qtmultimedia ];
-      };
-    };
     workspaces = [
       {
         label = icons.terminal;
