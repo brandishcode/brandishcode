@@ -1,13 +1,15 @@
 { config, lib, ... }:
 
 let
+  themeColors = lib.attrsets.mapAttrs (x: y: lib.strings.removePrefix "#" y)
+    config.theme.colors;
 in {
   config = {
     programs = {
       foot = lib.mkIf (config.terminal == "foot") {
         enable = true;
         settings = {
-          colors = with config.theme.colors; {
+          colors = with themeColors; {
             alpha = "0.8";
             background = lib.strings.removePrefix "#" background;
             foreground = lib.strings.removePrefix "#" foreground;
