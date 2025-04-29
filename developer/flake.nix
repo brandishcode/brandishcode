@@ -36,7 +36,7 @@
         home-manager-options = {
           username = options.username;
           homeDirectory = "/home/${options.username}";
-          stateVersion = "25.05";
+          stateVersion = "24.11";
         };
         lib = pkgs.lib;
         myLib = (import ./helpers/type-checker.nix { inherit lib; });

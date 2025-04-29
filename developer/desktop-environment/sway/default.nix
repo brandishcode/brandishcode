@@ -1,4 +1,6 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, config, lib, ... }:
+
+{
   config = lib.mkIf (config.desktopEnvironment.sway) {
     security.polkit.enable = true;
     home-manager.users.${config.username} = {
@@ -22,37 +24,8 @@
           };
           terminal = "${config.terminal} -t foot-direct";
           menu = "rofi -show drun";
-          # floating.criteria = [{ class = "install4j-jclient-LoginFrame"; }];
-          colors = with config.theme.colors; {
-            focused = {
-              border = blue;
-              background = brightblack;
-              text = brightwhite;
-              indicator = cyan;
-              childBorder = blue;
-            };
-            focusedInactive = {
-              border = blue;
-              background = brightblack;
-              text = brightwhite;
-              indicator = cyan;
-              childBorder = blue;
-            };
-            unfocused = {
-              border = brightblack;
-              background = black;
-              text = white;
-              indicator = cyan;
-              childBorder = brightblack;
-            };
-            urgent = {
-              border = yellow;
-              background = yellow;
-              text = black;
-              indicator = cyan;
-              childBorder = yellow;
-            };
-          };
+          colors = (import ./theme.nix { inherit config; });
+          bars = [{ command = "yambar"; }];
         };
       };
     };
