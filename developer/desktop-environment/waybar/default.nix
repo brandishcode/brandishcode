@@ -12,7 +12,7 @@
             output = [ "DP-2" "DP-3" "HDMI-A-1" ];
             modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
             modules-center = [ "sway/window" ];
-            modules-right = [ "temperature" "clock" ];
+            modules-right = [ "network" "temperature" "clock" ];
 
             "sway/workspaces" = {
               disable-scroll = true;
@@ -28,15 +28,16 @@
             # };
           };
         };
-        # style = with config.theme.colors; ''
-        #   window#waybar {
-        #     border: 1px solid ${blue};
-        #     padding-left: 2px;
-        #     padding-right: 2px;
-        #     background: ${background};
-        #     color: ${foreground};
-        #   }
-        # '';
+        style = with config.theme.colors; ''
+          #temperature {
+            background: ${green};
+            color: ${black};
+          }
+          #network {
+            background: ${blue};
+            color: ${black};
+          }
+        '';
       };
     };
   };
