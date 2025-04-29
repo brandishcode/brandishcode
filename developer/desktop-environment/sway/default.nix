@@ -25,7 +25,7 @@
           terminal = "${config.terminal} -t foot-direct";
           menu = "rofi -show drun";
           colors = (import ./theme.nix { inherit config; });
-          bars = [{ command = "yambar"; }];
+          bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
         };
       };
     };
