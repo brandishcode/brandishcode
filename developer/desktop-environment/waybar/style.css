@@ -1,0 +1,13 @@
+* {
+  font-size: 10px;
+}
+window#waybar {
+  background: transparent;
+}
+#clock,
+#network {
+  padding: 0 5px 0;
+  background: rgba(26,27,38,0.8);
+  color: @foreground@;
+  margin: 0 2px 2px;
+}
