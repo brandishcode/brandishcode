@@ -13,9 +13,15 @@ let
     inherit lib;
     inherit config;
   });
+  workspaceModules = { "sway/workspaces" = (import ./workspace.nix).default; };
+  memoryModules = {
+    memory = (import ./memory.nix {
+      inherit lib;
+      inherit config;
+    }).default;
+  };
   commonModules = {
     network = networkModules.default;
-    clock = clockModules.default;
     "clock#calendar" = calendarModules.default;
   };
   countryClockModules = with clockModules; {
@@ -34,30 +40,35 @@ in {
             position = "bottom";
             height = 35;
             output = [ "DP-2" ];
-            modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-            modules-center = [ ];
+            modules-left = [ "sway/mode" "wlr/taskbar" ];
+            modules-center = [ "sway/workspaces" ];
             modules-right = [
+              "memory"
               "network"
               "clock#paris"
               "clock#manila"
               "clock#tokyo"
               "clock#calendar"
-              "clock"
             ];
-            "sway/workspaces" = { disable-scroll = true; };
-          } // commonModules // countryClockModules;
+
+          } // commonModules // countryClockModules // workspaceModules
+            // memoryModules;
           monitor2Bar = {
             layer = "top";
             position = "bottom";
             height = 35;
             output = [ "DP-3" ];
-            modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
-            modules-right = [ "network" "clock#calendar" "clock" ];
-            "sway/workspaces" = { disable-scroll = true; };
-          } // commonModules;
+            modules-left = [ "sway/mode" "wlr/taskbar" ];
+            modules-center = [ "sway/workspaces" ];
+            modules-right = [ "memory" "network" "clock#calendar" ];
+          } // commonModules // workspaceModules // memoryModules;
         };
         style = with config.theme.colors;
-          pkgs.replaceVars ./style.css { inherit foreground; };
+          pkgs.replaceVars ./style.css {
+            inherit foreground;
+            inherit green;
+            inherit magenta;
+          };
       };
     };
   };

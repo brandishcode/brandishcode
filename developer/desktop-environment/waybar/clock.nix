@@ -1,20 +1,12 @@
 { lib, config }:
 
 with config.theme.colors; {
-  default = {
-    format = lib.concatStrings [
-      ''<span size="large" color="${yellow}"> </span>''
-      "{0:%H:%M}"
-      ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
-    ];
-  };
   tokyo = {
     timezone = "Asia/Tokyo";
     format = lib.concatStrings [
       "{0:%H:%M}"
       ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
+        <span size="small" rise="-1pt" color="${yellow}" weight="bold"> {0:%Z}</span>''
     ];
   };
   paris = {
@@ -22,7 +14,7 @@ with config.theme.colors; {
     format = lib.concatStrings [
       "{0:%H:%M}"
       ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
+        <span size="small" rise="-1pt" color="${yellow}" weight="bold"> {0:%Z}</span>''
     ];
   };
   manila = {
@@ -30,7 +22,7 @@ with config.theme.colors; {
     format = lib.concatStrings [
       "{0:%H:%M}"
       ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
+        <span size="small" rise="-1pt" color="${yellow}" weight="bold"> {0:%Z}</span>''
     ];
   };
 }

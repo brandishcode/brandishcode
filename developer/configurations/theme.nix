@@ -2,9 +2,9 @@
   theme = {
     wallpaper = ../options/wallpaper/mountain_esborn_pixabay.jpg;
     icons = {
-      terminal = "";
-      browser = "󰑈";
-      devBrowser = "";
+      terminal = "0";
+      browser = "9";
+      devBrowser = "8";
     };
   };
 }
