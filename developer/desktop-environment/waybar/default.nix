@@ -28,6 +28,7 @@ let
     "clock#tokyo" = tokyo;
     "clock#paris" = paris;
     "clock#manila" = manila;
+    "clock#newyork" = newyork;
   };
 in {
   config = lib.mkIf (config.desktopEnvironment.sway) {
@@ -40,11 +41,12 @@ in {
             position = "bottom";
             height = 35;
             output = [ "DP-2" ];
-            modules-left = [ "sway/mode" "wlr/taskbar" ];
-            modules-center = [ "sway/workspaces" ];
+            modules-left = [ ];
+            modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [
               "memory"
               "network"
+              "clock#newyork"
               "clock#paris"
               "clock#manila"
               "clock#tokyo"
@@ -58,8 +60,8 @@ in {
             position = "bottom";
             height = 35;
             output = [ "DP-3" ];
-            modules-left = [ "sway/mode" "wlr/taskbar" ];
-            modules-center = [ "sway/workspaces" ];
+            modules-left = [ ];
+            modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [ "memory" "network" "clock#calendar" ];
           } // commonModules // workspaceModules // memoryModules;
         };

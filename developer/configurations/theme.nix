@@ -1,6 +1,6 @@
 {
   theme = {
-    wallpaper = ../options/wallpaper/mountain_esborn_pixabay.jpg;
+    wallpaper = ./wallpaper/tokyo_night_00.jpg;
     icons = {
       terminal = "0";
       browser = "9";

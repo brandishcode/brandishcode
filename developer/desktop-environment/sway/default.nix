@@ -16,12 +16,26 @@
       in {
         enable = true;
         config = {
-          assigns = {
-            "${workspaceIcons.browser}" = [{ app_id = "^firefox$"; }];
-            "${workspaceIcons.terminal}" = [{ app_id = "^foot$"; }];
-            "${workspaceIcons.devBrowser}" =
-              [{ app_id = "^chromium-browser$"; }];
-          };
+          # assigns = {
+          #   "${workspaceIcons.browser}" = [{ app_id = "^firefox$"; }];
+          #   "${workspaceIcons.terminal}" = [{ app_id = "^foot$"; }];
+          #   "${workspaceIcons.devBrowser}" =
+          #     [{ app_id = "^chromium-browser$"; }];
+          # };
+          startup = [
+            {
+              command =
+                "--no-startup-id swaymsg 'workspace 0; exec foot --app-id main-foot'";
+            }
+            {
+              command = ''
+                --no-startup-id swaymsg "workspace 9; exec firefox --name firefox_youtube --no-remote -P youtube youtube.com"'';
+            }
+            {
+              command = ''
+                --no-startup-id swaymsg "workspace 8; exec firefox --name firefox_surf --no-remote"'';
+            }
+          ];
           terminal = "${config.terminal} -t foot-direct";
           menu = "rofi -show drun";
           colors = (import ./theme.nix { inherit config; });

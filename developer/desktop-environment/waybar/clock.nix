@@ -6,7 +6,7 @@ with config.theme.colors; {
     format = lib.concatStrings [
       "{0:%H:%M}"
       ''
-        <span size="small" rise="-1pt" color="${yellow}" weight="bold"> {0:%Z}</span>''
+        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
     ];
   };
   paris = {
@@ -14,7 +14,7 @@ with config.theme.colors; {
     format = lib.concatStrings [
       "{0:%H:%M}"
       ''
-        <span size="small" rise="-1pt" color="${yellow}" weight="bold"> {0:%Z}</span>''
+        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
     ];
   };
   manila = {
@@ -22,7 +22,16 @@ with config.theme.colors; {
     format = lib.concatStrings [
       "{0:%H:%M}"
       ''
-        <span size="small" rise="-1pt" color="${yellow}" weight="bold"> {0:%Z}</span>''
+        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
     ];
   };
+  newyork = {
+    timezone = "America/New_York";
+    format = lib.concatStrings [
+      "{0:%H:%M}"
+      ''
+        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
+    ];
+  };
+
 }
