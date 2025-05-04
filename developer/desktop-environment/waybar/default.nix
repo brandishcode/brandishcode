@@ -20,6 +20,12 @@ let
       inherit config;
     }).default;
   };
+  backlightModules = {
+    backlight = (import ./backlight.nix {
+      inherit config;
+      inherit lib;
+    });
+  };
   commonModules = {
     network = networkModules.default;
     "clock#calendar" = calendarModules.default;
@@ -42,6 +48,7 @@ in {
             height = 35;
             output = [ "DP-2" ];
             modules-left = [ ];
+            modules-left = [ "backlight" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [
               "memory"
@@ -52,7 +59,6 @@ in {
               "clock#tokyo"
               "clock#calendar"
             ];
-
           } // commonModules // countryClockModules // workspaceModules
             // memoryModules;
           monitor2Bar = {
@@ -63,7 +69,8 @@ in {
             modules-left = [ ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [ "memory" "network" "clock#calendar" ];
-          } // commonModules // workspaceModules // memoryModules;
+          } // commonModlues // workspaceModules
+            // memoryModules // backlightModules;
         };
         style = with config.theme.colors;
           pkgs.replaceVars ./style.css {
