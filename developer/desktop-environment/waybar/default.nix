@@ -20,16 +20,23 @@ let
       inherit config;
     }).default;
   };
-  backlightModules = {
-    backlight = (import ./backlight.nix {
+  # backlightModules = {
+  #   backlight = (import ./backlight.nix {
+  #     inherit config;
+  #     inherit lib;
+  #   });
+  # };
+  backlightModules = { };
+  pulseaudioModules = {
+    pulseaudio = import ./pulseaudio.nix {
       inherit config;
       inherit lib;
-    });
+    };
   };
   commonModules = {
     network = networkModules.default;
     "clock#calendar" = calendarModules.default;
-  };
+  } // pulseaudioModules;
   countryClockModules = with clockModules; {
     "clock#tokyo" = tokyo;
     "clock#paris" = paris;
@@ -47,8 +54,7 @@ in {
             position = "bottom";
             height = 35;
             output = [ "DP-2" ];
-            modules-left = [ ];
-            modules-left = [ "backlight" ];
+            modules-left = [ "pulseaudio" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [
               "memory"
@@ -69,8 +75,8 @@ in {
             modules-left = [ ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [ "memory" "network" "clock#calendar" ];
-          } // commonModlues // workspaceModules
-            // memoryModules // backlightModules;
+          } // commonModules // workspaceModules // memoryModules
+            // backlightModules;
         };
         style = with config.theme.colors;
           pkgs.replaceVars ./style.css {
