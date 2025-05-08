@@ -2,13 +2,15 @@
 
 {
   config = {
-    environment.systemPackages = with pkgs; [ cdrtools alsa-utils ];
+    environment.systemPackages = with pkgs; [ cdrtools alsa-utils pulseaudio ];
     services.pulseaudio.enable = false;
+    security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
     services.mpd = {
       enable = true;

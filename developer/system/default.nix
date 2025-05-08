@@ -51,7 +51,8 @@
     users.users.${config.username} = {
       isNormalUser = true;
       description = "Developer user";
-      extraGroups = [ "development" "networkmanager" "wheel" "dialout" ];
+      extraGroups =
+        [ "development" "networkmanager" "wheel" "dialout" "audio" ];
     };
 
     # SDDM ,and DesktopManager setup
