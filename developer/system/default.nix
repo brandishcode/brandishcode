@@ -94,29 +94,15 @@
       fcitx5 = {
         waylandFrontend = true;
         addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
-        settings = {
-          inputMethod = {
-            "Groups/0" = {
-              "Name" = "Default";
-              "Default Layout" = "us";
-              "DefaultIM" = "mozc";
-            };
-            "Groups/0/Items/0" = {
-              "Name" = "keyboard-us";
-              "Layout" = "";
-            };
-            "Groups/0/Items/1" = {
-              "Name" = "mozc";
-              "Layout" = "";
-            };
-            "GroupOrder" = { "0" = "Default"; };
-          };
-          globalOptions = {
-            "Hotkey/TriggerKeys" = { "0" = "Control+Henkan"; };
-          };
-        };
       };
     };
+    environment.variables = {
+      GTK_IM_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
+      GLFW_IM_MODULE = "ibus";
+    };
+
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
     # List packages installed in system profile. To search, run:

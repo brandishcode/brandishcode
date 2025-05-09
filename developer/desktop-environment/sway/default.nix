@@ -23,6 +23,7 @@
           #     [{ app_id = "^chromium-browser$"; }];
           # };
           startup = [
+            { command = "fcitx5"; }
             {
               command =
                 "--no-startup-id swaymsg 'workspace 0; exec foot --app-id main-foot'";
