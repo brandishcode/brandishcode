@@ -55,27 +55,6 @@
         [ "development" "networkmanager" "wheel" "dialout" "audio" ];
     };
 
-    # SDDM ,and DesktopManager setup
-    # environment.sessionVariables = {
-    #   WLR_NO_HARDWARE_CURSORS = "1";
-    #   NIXOS_OZONE_WL = "1";
-    # };
-    # services = {
-    #   displayManager = {
-    #     defaultSession = "sway";
-    #     sessionPackages = with pkgs; [ sway ];
-    #     sddm = {
-    #       theme = "sddm-astronaut-theme";
-    #       enable = true;
-    #       wayland.enable = true;
-    #       package = pkgs.kdePackages.sddm;
-    #       extraPackages = with pkgs; [ sddm-astronaut ];
-    #     };
-    #   };
-    # };
-    # environment.systemPackages = with pkgs;
-    #   [ (sddm-astronaut.override { embeddedTheme = "japanese_aesthetic"; }) ];
-
     # key mapping
     services.keyd = {
       enable = true;
@@ -94,6 +73,16 @@
       fcitx5 = {
         waylandFrontend = true;
         addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
+        settings.inputMethod = {
+          GroupOrder."0" = "Default";
+          "Groups/0" = {
+            Name = "Default";
+            "Default Layout" = "us";
+            DefaultIM = "mozc";
+          };
+          "Groups/0/Items/0".Name = "keyboard-us";
+          "Groups/0/Items/1".Name = "mozc";
+        };
       };
     };
     environment.variables = {
