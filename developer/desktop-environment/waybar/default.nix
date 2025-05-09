@@ -5,10 +5,6 @@ let
     inherit lib;
     inherit config;
   });
-  clockModules = (import ./clock.nix {
-    inherit lib;
-    inherit config;
-  });
   calendarModules = (import ./calendar.nix {
     inherit lib;
     inherit config;
@@ -33,16 +29,23 @@ let
       inherit lib;
     };
   };
+  diskModules = with import ./disk.nix {
+    inherit config;
+    inherit lib;
+  }; {
+    "disk#home" = home;
+    "disk#development" = development;
+    "disk#documents" = documents;
+    "disk#root" = root;
+  };
   commonModules = {
     network = networkModules.default;
     "clock#calendar" = calendarModules.default;
-  } // pulseaudioModules;
-  countryClockModules = with clockModules; {
-    "clock#tokyo" = tokyo;
-    "clock#paris" = paris;
-    "clock#manila" = manila;
-    "clock#newyork" = newyork;
-  };
+    "clock" = import ./clock.nix {
+      inherit config;
+      inherit lib;
+    };
+  } // pulseaudioModules // diskModules;
 in {
   config = lib.mkIf (config.desktopEnvironment.sway) {
     home-manager.users.${config.username} = {
@@ -57,16 +60,16 @@ in {
             modules-left = [ "pulseaudio" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [
+              "disk#root"
+              "disk#home"
+              "disk#development"
+              "disk#documents"
               "memory"
               "network"
-              "clock#newyork"
-              "clock#paris"
-              "clock#manila"
-              "clock#tokyo"
               "clock#calendar"
+              "clock"
             ];
-          } // commonModules // countryClockModules // workspaceModules
-            // memoryModules;
+          } // commonModules // workspaceModules // memoryModules;
           monitor2Bar = {
             layer = "top";
             position = "bottom";
@@ -74,7 +77,16 @@ in {
             output = [ "DP-3" ];
             modules-left = [ "pulseaudio" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
-            modules-right = [ "memory" "network" "clock#calendar" ];
+            modules-right = [
+              "disk#root"
+              "disk#home"
+              "disk#development"
+              "disk#documents"
+              "memory"
+              "network"
+              "clock#calendar"
+              "clock"
+            ];
           } // commonModules // workspaceModules // memoryModules
             // backlightModules;
         };

@@ -1,37 +1,12 @@
 { lib, config }:
 
 with config.theme.colors; {
-  tokyo = {
-    timezone = "Asia/Tokyo";
-    format = lib.concatStrings [
-      "{0:%H:%M}"
-      ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
-    ];
-  };
-  paris = {
-    timezone = "Europe/Paris";
-    format = lib.concatStrings [
-      "{0:%H:%M}"
-      ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
-    ];
-  };
-  manila = {
-    timezone = "Asia/Manila";
-    format = lib.concatStrings [
-      "{0:%H:%M}"
-      ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
-    ];
-  };
-  newyork = {
-    timezone = "America/New_York";
-    format = lib.concatStrings [
-      "{0:%H:%M}"
-      ''
-        <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
-    ];
-  };
-
+  tooltip-format = "{tz_list}";
+  timezones =
+    [ "Asia/Tokyo" "Etc/UTC" "America/New_York" "Europe/Paris" "Asia/Manila" ];
+  format = lib.concatStrings [
+    ''<span weight="bold"> {0:%H:%M}</span>''
+    ''
+      <span size="small" rise="-1pt" color="${green}" weight="bold"> {0:%Z}</span>''
+  ];
 }
