@@ -2,6 +2,18 @@
 
 {
   config = {
+    gtk = {
+      enable = true;
+      iconTheme = {
+        name = "Pop-Dark";
+        package = pkgs.pop-icon-theme;
+      };
+      theme = {
+        name = "Tokyonight-Dark";
+        package = pkgs.tokyonight-gtk-theme;
+      };
+    };
+
     home = {
       sessionVariables = { EDITOR = "nvim"; };
 
@@ -16,6 +28,7 @@
         noto-fonts-cjk-sans
         noto-fonts-emoji
         nerd-fonts.iosevka
+        dconf
       ];
     };
 

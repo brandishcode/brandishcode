@@ -101,6 +101,7 @@
       QT_IM_MODULE = "fcitx";
       XMODIFIERS = "@im=fcitx";
       GLFW_IM_MODULE = "ibus";
+      XDG_CURRENT_DESKTOP = "sway";
     };
 
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
