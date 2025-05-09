@@ -57,7 +57,7 @@ in {
             position = "bottom";
             height = 35;
             output = [ "DP-2" ];
-            modules-left = [ "pulseaudio" ];
+            modules-left = [ "tray" "pulseaudio" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [
               "disk#root"
@@ -95,6 +95,7 @@ in {
             inherit foreground;
             inherit green;
             inherit magenta;
+            inherit red;
           };
       };
     };

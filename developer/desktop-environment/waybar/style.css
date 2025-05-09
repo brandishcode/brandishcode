@@ -6,6 +6,7 @@ window#waybar {
   background: transparent;
 }
 
+#tray,
 #disk,
 #pulseaudio,
 #backlight,
@@ -16,6 +17,11 @@ window#waybar {
   background: rgba(26,27,38,0.8);
   color: @foreground@;
   margin: 0 2px 2px;
+}
+
+#tray {
+  border-radius: 3px;
+  background: rgba(192, 202, 245, 0.5);
 }
 
 button {
@@ -54,5 +60,5 @@ button:hover {
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: @red@;
 }
