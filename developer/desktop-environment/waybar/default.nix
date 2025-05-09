@@ -72,7 +72,7 @@ in {
             position = "bottom";
             height = 35;
             output = [ "DP-3" ];
-            modules-left = [ ];
+            modules-left = [ "pulseaudio" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [ "memory" "network" "clock#calendar" ];
           } // commonModules // workspaceModules // memoryModules
