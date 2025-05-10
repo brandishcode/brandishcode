@@ -5,12 +5,22 @@
     gtk = {
       enable = true;
       iconTheme = {
-        name = "Pop-Dark";
-        package = pkgs.pop-icon-theme;
+        name = "Nordzy-cyan";
+        package = pkgs.nordzy-icon-theme;
       };
       theme = {
         name = "Tokyonight-Dark";
         package = pkgs.tokyonight-gtk-theme;
+      };
+      cursorTheme = {
+        name = "Nordzy-cursors";
+        package = pkgs.nordzy-cursor-theme;
+        size = 32;
+      };
+      font = {
+        package = pkgs.nerd-fonts.iosevka;
+        name = "NerdFonts Iosevka";
+        size = 10;
       };
     };
 
@@ -21,6 +31,15 @@
         hms = ''
           home-manager switch -b backup --flake "path:$(readlink -f /home/${config.username}/${config.configpath}/#developer)"
         '';
+      };
+
+      pointerCursor = {
+        enable = true;
+        name = "Nordzy-cursors";
+        package = pkgs.nordzy-cursor-theme;
+        size = 32;
+        gtk.enable = true;
+        sway.enable = true;
       };
 
       packages = with pkgs; [
