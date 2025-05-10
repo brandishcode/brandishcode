@@ -52,11 +52,11 @@ in {
       programs.waybar = {
         enable = true;
         settings = {
-          monitor1Bar = {
+          mainBar = {
             layer = "top";
             position = "bottom";
             height = 35;
-            output = [ "DP-2" ];
+            output = [ "DP-2" "DP-3" "HDMI-A-1" ];
             modules-left = [ "tray" "pulseaudio" ];
             modules-center = [ "sway/mode" "sway/workspaces" ];
             modules-right = [
@@ -70,25 +70,6 @@ in {
               "clock"
             ];
           } // commonModules // workspaceModules // memoryModules;
-          monitor2Bar = {
-            layer = "top";
-            position = "bottom";
-            height = 35;
-            output = [ "DP-3" ];
-            modules-left = [ "pulseaudio" ];
-            modules-center = [ "sway/mode" "sway/workspaces" ];
-            modules-right = [
-              "disk#root"
-              "disk#home"
-              "disk#development"
-              "disk#documents"
-              "memory"
-              "network"
-              "clock#calendar"
-              "clock"
-            ];
-          } // commonModules // workspaceModules // memoryModules
-            // backlightModules;
         };
         style = with config.theme.colors;
           pkgs.replaceVars ./style.css {
@@ -96,6 +77,7 @@ in {
             inherit green;
             inherit magenta;
             inherit red;
+            # inherit cyan;
           };
       };
     };

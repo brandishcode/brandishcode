@@ -1,32 +1,39 @@
 { config }:
 
-with config.theme.colors; {
+with config.theme.colors;
+let
+  background = config.theme.colors.background + "00";
+  urgentBackground = red + "CC";
+  border = background;
+  indicator = background;
+  childBorder = background;
+in {
   focused = {
-    border = blue;
-    background = brightblack;
-    text = brightwhite;
-    indicator = cyan;
-    childBorder = blue;
+    inherit border;
+    inherit background;
+    text = magenta;
+    inherit indicator;
+    inherit childBorder;
   };
   focusedInactive = {
-    border = blue;
-    background = brightblack;
-    text = brightwhite;
-    indicator = cyan;
-    childBorder = blue;
+    inherit border;
+    inherit background;
+    text = cyan;
+    inherit indicator;
+    inherit childBorder;
   };
   unfocused = {
-    border = brightblack;
-    background = black;
-    text = white;
-    indicator = cyan;
-    childBorder = brightblack;
+    inherit border;
+    inherit background;
+    text = green;
+    inherit indicator;
+    inherit childBorder;
   };
   urgent = {
-    border = yellow;
-    background = yellow;
-    text = black;
-    indicator = cyan;
-    childBorder = yellow;
+    inherit border;
+    background = urgentBackground;
+    text = foreground;
+    inherit indicator;
+    inherit childBorder;
   };
 }

@@ -43,9 +43,9 @@
           bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
           gaps.outer = 2;
         };
-        extraConfig = ''
-          default_border none
-        '';
+        # extraConfig = ''
+        #   default_border none
+        # '';
       };
     };
   };
