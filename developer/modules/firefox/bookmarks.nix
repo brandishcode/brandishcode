@@ -5,6 +5,13 @@
     toolbar = true;
     bookmarks = [
       {
+        name = "ricing";
+        bookmarks = [{
+          name = "waybar wiki";
+          url = "https://github.com/Alexays/Waybar/wiki";
+        }];
+      }
+      {
         name = "git";
         tags = [ "git" ];
         keyword = "git";
@@ -69,3 +76,4 @@
     ];
   }];
 }
+

@@ -30,7 +30,7 @@
             }
             {
               command = ''
-                --no-startup-id swaymsg "workspace 9; exec firefox --name firefox_youtube --no-remote -P youtube youtube.com"'';
+                --no-startup-id swaymsg "workspace 9; exec firefox --name firefox_youtube --no-remote -P youtube https://www.youtube.com"'';
             }
             {
               command = ''
