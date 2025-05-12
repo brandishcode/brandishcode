@@ -18,7 +18,7 @@
       {
         label = icons.devBrowser;
         inherit (builtins.elemAt monitor 0) output;
-        shortcut = 8;
+        shortcut = 1;
         apps = [ pkgs.chromium ];
       }
     ];

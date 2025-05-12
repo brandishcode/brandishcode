@@ -2,11 +2,11 @@
   default = {
     disable-scroll = true;
     all-outputs = true;
-    format = "{icon}";
+    format = ''<span size="x-large">{icon}</span>'';
     format-icons = {
       "0" = " ";
-      "9" = "󰗃 ";
-      "8" = " ";
+      "1" = "󰗃 ";
+      "9" = "󱝆 ";
     };
   };
 }

@@ -13,7 +13,7 @@
         package = pkgs.tokyonight-gtk-theme;
       };
       cursorTheme = {
-        name = "Nordzy-cursors";
+        name = "Nordzy-cursors-white";
         package = pkgs.nordzy-cursor-theme;
         size = 32;
       };
@@ -35,7 +35,7 @@
 
       pointerCursor = {
         enable = true;
-        name = "Nordzy-cursors";
+        name = "Nordzy-cursors-white";
         package = pkgs.nordzy-cursor-theme;
         size = 32;
         gtk.enable = true;
