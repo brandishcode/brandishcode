@@ -34,7 +34,7 @@
             }
             {
               command = ''
-                --no-startup-id swaymsg "workspace 8; exec firefox --name firefox_surf --no-remote"'';
+                --no-startup-id swaymsg "workspace 1; exec firefox --name firefox_surf --no-remote"'';
             }
           ];
           terminal = "${config.terminal} -t foot-direct";
