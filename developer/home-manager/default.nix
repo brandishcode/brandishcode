@@ -24,6 +24,12 @@
       };
     };
 
+    qt = {
+      enable = true;
+      platformTheme.name = "gtk";
+      style.name = "gtk";
+      style.package = pkgs.tokyonight-gtk-theme;
+    };
     home = {
       sessionVariables = { EDITOR = "nvim"; };
 

@@ -89,7 +89,7 @@
       GTK_IM_MODULE = "fcitx";
       QT_IM_MODULE = "fcitx";
       XMODIFIERS = "@im=fcitx";
-      GLFW_IM_MODULE = "ibus";
+      GLFW_IM_MODULE = "fcitx";
       XDG_CURRENT_DESKTOP = "sway";
     };
 
