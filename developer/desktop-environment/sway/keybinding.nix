@@ -16,6 +16,15 @@ in {
       inherit modifier;
       keybindings = lib.mkOptionDefault ({
         "${modifier}+Shift+b" = "exec firefox";
+        "${modifier}+Control+Shift+a" = "move workspace to output ${
+            (builtins.elemAt config.monitor 0).output
+          }";
+        "${modifier}+Control+Shift+o" = "move workspace to output ${
+            (builtins.elemAt config.monitor 1).output
+          }";
+        "${modifier}+Control+Shift+e" = "move workspace to output ${
+            (builtins.elemAt config.monitor 2).output
+          }";
       } // createMoveToWorkspace // createMoveWindowToWorkspace);
     };
   };

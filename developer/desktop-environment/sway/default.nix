@@ -30,11 +30,11 @@
             }
             {
               command = ''
-                --no-startup-id swaymsg "workspace 9; exec firefox --name firefox_youtube --no-remote -P youtube https://www.youtube.com"'';
+                --no-startup-id swaymsg "workspace 1; exec firefox --name firefox-youtube --no-remote -P youtube https://www.youtube.com"'';
             }
             {
               command = ''
-                --no-startup-id swaymsg "workspace 1; exec firefox --name firefox_surf --no-remote"'';
+                --no-startup-id swaymsg "workspace 9; exec firefox --name firefox-surf --no-remote"'';
             }
           ];
           terminal = "${config.terminal} -t foot-direct";
