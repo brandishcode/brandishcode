@@ -19,4 +19,5 @@
   "layers.acceleration.force-enabled" = true;
   "gfx.webrender.all" = true;
   "svg.context-properties.content.enabled" = true;
+  "browser.sessionstore.resume_from_crash" = false;
 }

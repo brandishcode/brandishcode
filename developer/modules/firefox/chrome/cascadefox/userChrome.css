@@ -1,26 +1,8 @@
-#star-button,
-#reload-button,
-#stop-button,
-toolbar toolbarspring,
-.titlebar-buttonbox-container,
-#alltabs-button,
-#unified-extensions-button,
-.bookmark-item .toolbarbutton-icon,
-#tracking-protection-icon-container,
-#urlbar-zoom-button,
+toolbarspring,
 #star-button-box,
-#pageActionButton,
-#pageActionSeparator,
-#tabs-newtab-button,
-#back-button,
-#PanelUI-button,
-#forward-button,
-.tab-secondary-label,
+#reload-button,
 #firefox-view-button,
+#unified-extensions-button,
 toolbarbutton[data-extensionid="uBlock0@raymondhill.net"] {
   display: none !important;
-}
-
-#nav-bar {
-  width: 500px;
 }

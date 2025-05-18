@@ -21,6 +21,10 @@ in {
     source = "${firefoxChrome}/cascadefox/chrome";
     recursive = true;
   };
+  home.file.".mozilla/firefox/netflix/chrome" = {
+    source = "${firefoxChrome}/cascadefox/chrome";
+    recursive = true;
+  };
   programs.firefox = {
     enable = true;
     profiles = {
@@ -31,6 +35,10 @@ in {
       # };
       youtube = {
         id = 1;
+        isDefault = false;
+      } // profile;
+      netflix = {
+        id = 2;
         isDefault = false;
       } // profile;
     };
