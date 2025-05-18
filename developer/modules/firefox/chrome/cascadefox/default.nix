@@ -1,13 +1,10 @@
-{ config, stdenvNoCC, fetchFromGitHub, replaceVars }:
+{ config, stdenvNoCC, replaceVars }:
 
 stdenvNoCC.mkDerivation rec {
   name = "firefox-cascadefox";
-  src = fetchFromGitHub {
+  src = builtins.fetchGit {
     url = "https://github.com/cascadefox/cascade";
-    owner = "cascadefox";
-    repo = "cascade";
     rev = "f8c6bb5a36f24aba61995204ff5497c865e78e50";
-    hash = "sha256-aylkbsKLuCJqao8oeEZvSMaZUvjIxhlT/kGJ1DDsEt0=";
   };
 
   coloursConfig = with config.theme.colors;
@@ -24,22 +21,15 @@ stdenvNoCC.mkDerivation rec {
       inherit white;
     };
 
-  # unpackPhase = ''
-  #   cp ${coloursConfig} $src/chrome/example.css
-  # '';
+  appendToUserChrome = ''
+    cat ${./userChrome.css} >> $out/cascadefox/chrome/userChrome.css
+  '';
 
   installPhase = ''
-    mkdir -p $out/chrome/includes
-    cp -r $src/chrome/userChrome.css $out/chrome/
-    cp -r $src/chrome/includes/cascade-config.css \
-    $src/chrome/includes/cascade-config-mouse.css  \
-    $src/chrome/includes/cascade-floating-panel.css \
-    $src/chrome/includes/cascade-layout.css \
-    $src/chrome/includes/cascade-nav-bar.css \
-    $src/chrome/includes/cascade-responsive.css \
-    $src/chrome/includes/cascade-responsive-windows-fix.css \
-    $src/chrome/includes/cascade-tabs.css \
-    $out/chrome/includes/
-    cp ${coloursConfig} $out/chrome/includes/cascade-colours.css
-  '';
+    mkdir -p $out/cascadefox/chrome/includes
+    cat $src/chrome/userChrome.css >> $out/cascadefox/chrome/userChrome.css
+    cp -r $src/chrome/includes/* $out/cascadefox/chrome/includes/
+    rm $out/cascadefox/chrome/includes/cascade-colours.css
+    cp ${coloursConfig} $out/cascadefox/chrome/includes/cascade-colours.css
+  '' + appendToUserChrome;
 }

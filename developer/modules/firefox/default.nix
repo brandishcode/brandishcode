@@ -6,20 +6,19 @@ let
     extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
       ublock-origin
       tridactyl
-      tokyo-night-v2
     ];
     settings = import ./settings.nix;
 
   };
-  cascadefox = pkgs.callPackage ./chrome/cascadefox { inherit config; };
+  firefoxChrome = pkgs.callPackage ./chrome/cascadefox { inherit config; };
 in {
-  home.packages = [ cascadefox ];
+  home.packages = [ firefoxChrome ];
   home.file.".mozilla/firefox/default/chrome" = {
-    source = "${cascadefox}/chrome";
+    source = "${firefoxChrome}/cascadefox/chrome";
     recursive = true;
   };
   home.file.".mozilla/firefox/youtube/chrome" = {
-    source = "${cascadefox}/chrome";
+    source = "${firefoxChrome}/cascadefox/chrome";
     recursive = true;
   };
   programs.firefox = {

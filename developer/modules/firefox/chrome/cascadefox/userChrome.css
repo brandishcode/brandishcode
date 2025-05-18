@@ -1,0 +1,26 @@
+#star-button,
+#reload-button,
+#stop-button,
+toolbar toolbarspring,
+.titlebar-buttonbox-container,
+#alltabs-button,
+#unified-extensions-button,
+.bookmark-item .toolbarbutton-icon,
+#tracking-protection-icon-container,
+#urlbar-zoom-button,
+#star-button-box,
+#pageActionButton,
+#pageActionSeparator,
+#tabs-newtab-button,
+#back-button,
+#PanelUI-button,
+#forward-button,
+.tab-secondary-label,
+#firefox-view-button,
+toolbarbutton[data-extensionid="uBlock0@raymondhill.net"] {
+  display: none !important;
+}
+
+#nav-bar {
+  width: 500px;
+}
