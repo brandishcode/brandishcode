@@ -11,16 +11,17 @@ let
     settings = import ./settings.nix;
 
   };
+  cascadefox = pkgs.callPackage ./chrome/cascadefox { inherit config; };
 in {
-  home.file = { } // (import ./external.nix {
-    profile = "default";
-    inherit pkgs;
-    inherit config;
-  }) // (import ./external.nix {
-    profile = "youtube";
-    inherit pkgs;
-    inherit config;
-  });
+  home.packages = [ cascadefox ];
+  home.file.".mozilla/firefox/default/chrome" = {
+    source = "${cascadefox}/chrome";
+    recursive = true;
+  };
+  home.file.".mozilla/firefox/youtube/chrome" = {
+    source = "${cascadefox}/chrome";
+    recursive = true;
+  };
   programs.firefox = {
     enable = true;
     profiles = {
