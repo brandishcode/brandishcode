@@ -22,8 +22,6 @@
         pkgs = import nixpkgs {
           inherit system;
           overlays = [ nur.overlays.default ];
-          config.allowUnfreePredicate = pkg:
-            builtins.elem (nixpkgs.lib.getName pkg) [ "tokyo-night-v2" ];
         };
         nixvim' = {
           home.packages = [
