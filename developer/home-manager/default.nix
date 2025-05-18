@@ -77,6 +77,7 @@
     ../modules/ncmpcpp
     ../modules/rofi
     ../modules/chromium
+    ../modules/fcitx5
   ];
 }
 
