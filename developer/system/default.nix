@@ -48,7 +48,7 @@
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.groups = { development = { }; };
-    users.users.${config.username} = {
+    users.users.${config.user.username} = {
       isNormalUser = true;
       description = "Developer user";
       extraGroups =
@@ -81,7 +81,7 @@
     # environment.systemPackages = with pkgs; [ ];
     environment.shellAliases = {
       nrb = ''
-        sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.username}/${config.configpath}/#developer@${config.hostname})"
+        sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#developer@${config.hostname})"
       '';
     };
     services.udev.packages = with pkgs; [ vial via ];

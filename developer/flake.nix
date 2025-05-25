@@ -46,7 +46,7 @@
           }) // (import ./types/workspace-types.nix {
             inherit lib;
             inherit myLib;
-          });
+          }) // (import ./types/user-types.nix { inherit lib; });
         myArgs = {
           inherit myLib;
           inherit myTypes;

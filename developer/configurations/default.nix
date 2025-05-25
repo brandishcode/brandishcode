@@ -6,4 +6,4 @@ let
     theme = config.theme;
   });
   myconfig = { imports = [ ./theme.nix desktop-environment ./desktop ]; };
-in { home-manager.users.${config.username} = myconfig; } // myconfig
+in { home-manager.users.${config.user.username} = myconfig; } // myconfig

@@ -48,7 +48,7 @@ let
   } // pulseaudioModules // diskModules;
 in {
   config = lib.mkIf (config.desktopEnvironment.sway) {
-    home-manager.users.${config.username} = {
+    home-manager.users.${config.user.username} = {
       programs.waybar = {
         enable = true;
         settings = {

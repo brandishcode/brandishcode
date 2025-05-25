@@ -35,7 +35,7 @@
 
       shellAliases = {
         hms = ''
-          home-manager switch -b backup --flake "path:$(readlink -f /home/${config.username}/${config.configpath}/#developer)"
+          home-manager switch -b backup --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#developer)"
         '';
       };
 
