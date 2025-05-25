@@ -15,7 +15,9 @@ in {
     wayland.windowManager.sway.config = {
       inherit modifier;
       keybindings = lib.mkOptionDefault ({
-        "${modifier}+Shift+b" = "exec firefox";
+        "${modifier}+Shift+e" =
+          "exec foot --app-id foot-ranger -T 'File Explorer' ranger";
+        "${modifier}+Shift+b" = "exec firefox --name firefox-surf";
         "${modifier}+Control+Shift+a" = "move workspace to output ${
             (builtins.elemAt config.monitor 0).output
           }";

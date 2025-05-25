@@ -3,7 +3,7 @@
 {
   config = lib.mkIf (config.desktopEnvironment.sway) {
     security.polkit.enable = true;
-    home-manager.users.${config.username} = {
+    home-manager.users.${config.user.username} = {
       imports =
         [ ./display.nix ./keybinding.nix ./swayidle.nix ./swaylock.nix ];
       home = {
@@ -37,7 +37,16 @@
                 --no-startup-id swaymsg "workspace 9; exec firefox --name firefox-surf --no-remote"'';
             }
           ];
-          terminal = "${config.terminal} -t foot-direct";
+          window = {
+            commands = [{
+              command = "floating enable, resize set 75 ppt 75 ppt";
+              criteria = {
+                title = "File Explorer";
+                app_id = "foot-ranger";
+              };
+            }];
+          };
+          terminal = "${config.terminal}";
           menu = "rofi -show drun";
           colors = (import ./theme.nix { inherit config; });
           bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];

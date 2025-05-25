@@ -78,6 +78,7 @@
     ../modules/rofi
     ../modules/chromium
     ../modules/fcitx5
+    ../modules/ranger
   ];
 }
 
