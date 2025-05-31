@@ -46,7 +46,7 @@
               };
             }];
           };
-          terminal = "${config.terminal}";
+          terminal = "foot";
           menu = "rofi -show drun";
           colors = (import ./theme.nix { inherit config; });
           bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];

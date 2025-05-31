@@ -5,6 +5,9 @@ let
     ./hardware-options.nix
     ./desktop-environment-options.nix
     ./theme-options.nix
+    ./directory-options.nix
+    ./systemd-boot-options.nix
+    ./local
   ];
 in {
   inherit imports;

@@ -34,48 +34,38 @@
             })
           ];
         };
-        options = import ./options-definition.nix;
+        username = "developer";
         home-manager-options = {
-          username = options.username;
-          homeDirectory = "/home/${options.username}";
+          username = username;
+          homeDirectory = "/home/${username}";
           stateVersion = "24.11";
         };
         myArgs = import ./my-args.nix { inherit (pkgs) lib; };
       in {
         packages = {
           nixosConfigurations = {
-            "${options.username}@${options.hostname}" =
-              nixpkgs.lib.nixosSystem {
-                inherit pkgs;
-                modules = [
-                  lix-module.nixosModules.default
-                  { _module.args = myArgs; }
-                  home-manager.nixosModules.home-manager
-                  options
-                  ./options-declaration.nix
-                  ./options
-                  ./configurations
-                  ./system
-                  ./desktop-environment
-                  {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.extraSpecialArgs = {
-                      inherit system;
-                    } // myArgs;
-                    # home-manager setup
-                    home-manager.users.${options.username} = {
-                      home.stateVersion = home-manager-options.stateVersion;
-                      imports = [
-                        options
-                        ./options-declaration.nix
-                        ./home-manager
-                        nixvim'
-                      ];
-                    };
-                  }
-                ];
-              };
+            "${username}" = nixpkgs.lib.nixosSystem {
+              inherit pkgs;
+              modules = [
+                lix-module.nixosModules.default
+                { _module.args = myArgs; }
+                home-manager.nixosModules.home-manager
+                ./options
+                ./configurations
+                ./system
+                ./desktop-environment
+                {
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = { inherit system; } // myArgs;
+                  # home-manager setup
+                  home-manager.users.${username} = {
+                    home.stateVersion = home-manager-options.stateVersion;
+                    imports = [ ./home-manager nixvim' ];
+                  };
+                }
+              ];
+            };
           };
         };
       });

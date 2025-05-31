@@ -81,7 +81,7 @@
     # environment.systemPackages = with pkgs; [ ];
     environment.shellAliases = {
       nrb = ''
-        sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#developer@${config.hostname})"
+        sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#${config.user.username})"
       '';
     };
     services.udev.packages = with pkgs; [ vial via ];

@@ -4,4 +4,6 @@
 # !developer/configurations/theme.nix
 # !developer/configurations/desktop/default.nix
 
+options/local/*
+
 **/options-definition.nix

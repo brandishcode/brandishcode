@@ -6,7 +6,7 @@ let
 in {
   config = {
     programs = {
-      foot = lib.mkIf (config.terminal == "foot") {
+      foot = {
         enable = true;
         settings = {
           colors = with themeColors; {
