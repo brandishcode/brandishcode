@@ -69,16 +69,16 @@
   };
 
   imports = [
-    ../modules/tmux
-    ../modules/git
-    ../modules/firefox
-    ../modules/ssh
-    ../modules/terminal
-    ../modules/ncmpcpp
-    ../modules/rofi
-    ../modules/chromium
-    ../modules/fcitx5
-    ../modules/ranger
+    ../pkgs/tmux
+    ../pkgs/git
+    ../pkgs/firefox
+    ../pkgs/ssh
+    ../pkgs/foot
+    ../pkgs/ncmpcpp
+    ../pkgs/rofi
+    ../pkgs/chromium
+    ../pkgs/fcitx5
+    ../pkgs/ranger
   ];
 }
 

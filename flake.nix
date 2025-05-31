@@ -36,42 +36,9 @@
           homeDirectory = "/home/${options.username}";
           stateVersion = "24.11";
         };
-        lib = pkgs.lib;
-        myLib = (import ./helpers/type-checker.nix { inherit lib; });
-        myTypes = (import ./types/monitor-types.nix { inherit lib; })
-          // (import ./types/theme-types.nix { inherit lib; })
-          // (import ./types/display-manager-types.nix {
-            inherit lib;
-            inherit myLib;
-          }) // (import ./types/workspace-types.nix {
-            inherit lib;
-            inherit myLib;
-          }) // (import ./types/user-types.nix { inherit lib; });
-        myArgs = {
-          inherit myLib;
-          inherit myTypes;
-        };
+        myArgs = import ./my-args.nix { inherit (pkgs) lib; };
       in {
         packages = {
-          homeConfigurations = {
-            "${options.username}" = home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              modules = [
-                {
-                  home = with home-manager-options; {
-                    inherit username;
-                    inherit homeDirectory;
-                    inherit stateVersion;
-                  };
-                }
-                options
-                ./options-declaration.nix
-                ./home-manager
-                nixvim'
-              ];
-            };
-          };
-
           nixosConfigurations = {
             "${options.username}@${options.hostname}" =
               nixpkgs.lib.nixosSystem {

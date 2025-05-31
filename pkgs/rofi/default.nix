@@ -1,5 +1,5 @@
 { pkgs, ... }:
-let rofi-theme-tokyo-night = (pkgs.callPackage ../../pkgs/rofi-theme.nix { });
+let rofi-theme-tokyo-night = (pkgs.callPackage ./rofi-theme.nix { });
 in {
   programs.rofi = {
     enable = true;
