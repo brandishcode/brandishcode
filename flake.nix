@@ -35,11 +35,6 @@
           ];
         };
         username = "developer";
-        home-manager-options = {
-          username = username;
-          homeDirectory = "/home/${username}";
-          stateVersion = "24.11";
-        };
         myArgs = import ./my-args.nix { inherit (pkgs) lib; };
       in {
         packages = {
@@ -60,7 +55,7 @@
                   home-manager.extraSpecialArgs = { inherit system; } // myArgs;
                   # home-manager setup
                   home-manager.users.${username} = {
-                    home.stateVersion = home-manager-options.stateVersion;
+                    home.stateVersion = "24.11";
                     imports = [ ./home-manager nixvim' ];
                   };
                 }
