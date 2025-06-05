@@ -7,7 +7,7 @@
       description = ''
         Graphics Card
       '';
-      type = lib.types.string;
+      type = lib.types.str;
     };
     monitor = lib.mkOption {
       default = [{
