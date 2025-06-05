@@ -7,6 +7,7 @@
   nixvim,
   ...
 }:
+
 flake-utils.lib.eachDefaultSystemPassThrough (
   system:
   let
@@ -17,29 +18,32 @@ flake-utils.lib.eachDefaultSystemPassThrough (
         })
       ];
     };
-    username = "developer";
+    inherit ((import ../configurations/user.nix).user) username;
+    args = import ../my-args.nix { inherit (self.pkgs) lib; } // {
+      inherit system;
+    };
   in
   {
     nixosConfigurations = {
       "${username}" = nixpkgs.lib.nixosSystem {
-        pkgs = self.myNixpkgs;
+        pkgs = self.pkgs;
         modules = [
           lix-module.nixosModules.default
-          { _module.args = self.myArgs; }
+          { _module.args = args; }
           home-manager.nixosModules.home-manager
-          ./options
-          ./configurations
-          ./system
-          ./desktop-environment
+          ../options
+          ../configurations
+          ../system
+          ../desktop-environment
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = self.myArgs;
+            home-manager.extraSpecialArgs = args;
             # home-manager setup
             home-manager.users.${username} = {
               home.stateVersion = "24.11";
               imports = [
-                ./home-manager
+                ../home-manager
                 nixvim'
               ];
             };

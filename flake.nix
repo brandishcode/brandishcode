@@ -15,23 +15,24 @@
 
   outputs =
     inputs@{
-      self,
       nixpkgs,
       flake-utils,
       nur,
       ...
     }:
+    let
+      nixpkgsSystem =
+        nixpkgs: system: overlays':
+        import nixpkgs {
+          inherit system;
+          overlays = [ ] ++ overlays';
+        };
+    in
     flake-utils.lib.meld inputs [
-      ./nixos-configuration.nix
-      ./formatter-configuration.nix
+      ./nix/nixos-configuration.nix
+      ./nix/formatter.nix
     ]
     // flake-utils.lib.eachDefaultSystemPassThrough (system: {
-      myNixpkgs = import nixpkgs {
-        inherit system;
-        overlays = [ nur.overlays.default ];
-      };
-      myArgs = import ./my-args.nix { inherit (self.myNixpkgs) lib; } // {
-        inherit system;
-      };
+      pkgs = nixpkgsSystem nixpkgs system [ nur.overlays.default ];
     });
 }
