@@ -1,1 +1,7 @@
-{ imports = [ ./sddm ./waybar ./sway ]; }
+{
+  imports = [
+    ./sddm
+    ./waybar
+    ./sway
+  ];
+}

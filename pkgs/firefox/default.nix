@@ -11,7 +11,8 @@ let
 
   };
   firefoxChrome = pkgs.callPackage ./chrome/cascadefox { inherit config; };
-in {
+in
+{
   home.packages = [ firefoxChrome ];
   home.file.".mozilla/firefox/default/chrome" = {
     source = "${firefoxChrome}/cascadefox/chrome";

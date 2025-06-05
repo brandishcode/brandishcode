@@ -2,12 +2,14 @@
 
 with config.theme.colors;
 let
-  createFormat = x:
+  createFormat =
+    x:
     lib.concatStrings [
       ''<span size="large" color="${green}">${x} </span>''
       "{ifname}"
     ];
-in {
+in
+{
   default = {
     format-wifi = createFormat "󰖩 ";
     format-ethernet = createFormat "󰈀 ";

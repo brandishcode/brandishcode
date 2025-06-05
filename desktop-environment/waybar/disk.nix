@@ -2,13 +2,15 @@
 
 with config.theme.colors;
 let
-  createFormat = x:
+  createFormat =
+    x:
     lib.concatStrings [
       ''<span size="large" color="${green}">${x}</span>''
       "<span>{free}</span>"
     ];
   interval = 60;
-in {
+in
+{
   home = {
     inherit interval;
     format = createFormat "󰋜 ";

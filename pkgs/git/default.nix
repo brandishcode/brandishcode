@@ -2,16 +2,22 @@
 
 {
   config = {
-    home.sessionVariables = { GITHUB_TOKEN = config.git.token; };
+    home.sessionVariables = {
+      GITHUB_TOKEN = config.git.token;
+    };
 
     programs = {
       git = {
         enable = true;
         userName = config.git.username;
         userEmail = config.git.useremail;
-        extraConfig = { init.defaultBranch = "main"; };
+        extraConfig = {
+          init.defaultBranch = "main";
+        };
       };
-      gh = { enable = true; };
+      gh = {
+        enable = true;
+      };
     };
   };
 }

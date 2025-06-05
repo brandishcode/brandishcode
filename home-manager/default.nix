@@ -31,7 +31,9 @@
       style.package = pkgs.tokyonight-gtk-theme;
     };
     home = {
-      sessionVariables = { EDITOR = "nvim"; };
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
 
       shellAliases = {
         hms = ''
@@ -81,4 +83,3 @@
     ../pkgs/ranger
   ];
 }
-

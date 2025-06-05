@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 let
-  themeColors = lib.attrsets.mapAttrs (x: y: lib.strings.removePrefix "#" y)
-    config.theme.colors;
-in {
+  themeColors = lib.attrsets.mapAttrs (x: y: lib.strings.removePrefix "#" y) config.theme.colors;
+in
+{
   config = {
     programs = {
       foot = {
@@ -34,7 +34,9 @@ in {
             bright6 = lib.strings.removePrefix "#" brightcyan;
             bright7 = lib.strings.removePrefix "#" brightwhite;
           };
-          mouse = { hide-when-typing = "yes"; };
+          mouse = {
+            hide-when-typing = "yes";
+          };
         };
       };
     };

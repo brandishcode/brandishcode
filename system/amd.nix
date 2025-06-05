@@ -1,7 +1,14 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
-let isGpu = config.gpu == "amd";
-in {
+let
+  isGpu = config.gpu == "amd";
+in
+{
   config = {
     boot.kernelModules = lib.mkIf isGpu [ "kvm-amd" ];
     hardware.graphics = lib.mkIf isGpu {
@@ -9,8 +16,7 @@ in {
       extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
     };
     hardware.cpu.amd = lib.mkIf isGpu {
-      updateMicrocode =
-        lib.mkDefault config.hardware.enableRedistributableFirmware;
+      updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     };
   };
 }

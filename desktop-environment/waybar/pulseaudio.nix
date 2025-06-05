@@ -1,6 +1,7 @@
 { config, lib }:
 
-with config.theme.colors; {
+with config.theme.colors;
+{
   format = lib.concatStrings [
     ''<span size="large" color="${magenta}">{icon}</span>''
     "<span> {volume}%</span>"

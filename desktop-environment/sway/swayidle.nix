@@ -1,1 +1,5 @@
-{ services.swayidle = { enable = true; }; }
+{
+  services.swayidle = {
+    enable = true;
+  };
+}

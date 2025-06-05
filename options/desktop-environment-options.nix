@@ -12,12 +12,14 @@
         type = myTypes.displayManagerType;
       };
       workspaces = lib.mkOption {
-        default = [{
-          label = "TERMINAL";
-          output = "DP-1";
-          shortcut = 0;
-          apps = [ "firefox" ];
-        }];
+        default = [
+          {
+            label = "TERMINAL";
+            output = "DP-1";
+            shortcut = 0;
+            apps = [ "firefox" ];
+          }
+        ];
         type = lib.types.listOf myTypes.workspaceType;
       };
     };

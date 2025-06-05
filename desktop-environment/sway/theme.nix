@@ -7,7 +7,8 @@ let
   border = background;
   indicator = background;
   childBorder = background;
-in {
+in
+{
   focused = {
     inherit border;
     inherit background;

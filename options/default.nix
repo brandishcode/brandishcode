@@ -9,7 +9,8 @@ let
     ./systemd-boot-options.nix
     ./local
   ];
-in {
+in
+{
   inherit imports;
   home-manager.users.${config.user.username} = { inherit imports; };
 }

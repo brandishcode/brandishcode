@@ -8,7 +8,11 @@
 
   # Include the results of the hardware scan.
   # Include home-manager
-  imports = [ ./hardware-configuration.nix ./audio.nix ./security.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ./audio.nix
+    ./security.nix
+  ];
 
   config = {
     # Bootloader.
@@ -32,7 +36,10 @@
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
-    i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" ];
+    i18n.supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ja_JP.UTF-8/UTF-8"
+    ];
 
     i18n.extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";
@@ -47,12 +54,19 @@
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.groups = { development = { }; };
+    users.groups = {
+      development = { };
+    };
     users.users.${config.user.username} = {
       isNormalUser = true;
       description = "Developer user";
-      extraGroups =
-        [ "development" "networkmanager" "wheel" "dialout" "audio" ];
+      extraGroups = [
+        "development"
+        "networkmanager"
+        "wheel"
+        "dialout"
+        "audio"
+      ];
     };
 
     # key mapping
@@ -61,7 +75,11 @@
       keyboards = {
         default = {
           ids = [ "*" ];
-          settings = { main = { capslock = "henkan"; }; };
+          settings = {
+            main = {
+              capslock = "henkan";
+            };
+          };
         };
       };
     };
@@ -84,7 +102,10 @@
         sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#${config.user.username})"
       '';
     };
-    services.udev.packages = with pkgs; [ vial via ];
+    services.udev.packages = with pkgs; [
+      vial
+      via
+    ];
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
@@ -114,6 +135,9 @@
     system.stateVersion = "24.05"; # Did you read the comment?
 
     # enable flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 }

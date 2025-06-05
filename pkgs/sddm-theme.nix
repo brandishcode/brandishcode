@@ -1,4 +1,11 @@
-{ qtbase, qtsvg, qt5compat, wrapQtAppsHook, stdenvNoCC, fetchFromGitHub }:
+{
+  qtbase,
+  qtsvg,
+  qt5compat,
+  wrapQtAppsHook,
+  stdenvNoCC,
+  fetchFromGitHub,
+}:
 
 stdenvNoCC.mkDerivation {
   pname = "tokyo-night-sddm";
@@ -13,7 +20,10 @@ stdenvNoCC.mkDerivation {
 
   buildInputs = [ qtbase ];
   nativeBuildInputs = [ wrapQtAppsHook ];
-  propagatedUserEnvPkgs = [ qtsvg qt5compat ];
+  propagatedUserEnvPkgs = [
+    qtsvg
+    qt5compat
+  ];
 
   installPhase = ''
     mkdir -p $out/share/sddm/themes

@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
   config = {
@@ -8,13 +13,14 @@
       NIXOS_OZONE_WL = "1";
     };
 
-    services.displayManager =
-      lib.mkIf config.desktopEnvironment.displayManager.enable (lib.mkMerge [
+    services.displayManager = lib.mkIf config.desktopEnvironment.displayManager.enable (
+      lib.mkMerge [
         (lib.mkIf config.desktopEnvironment.sway {
           defaultSession = "sway";
           sessionPackages = [ pkgs.sway ];
         })
-        (with config.desktopEnvironment;
+        (
+          with config.desktopEnvironment;
           lib.mkIf (displayManager.name == "sddm") {
             sddm = {
               theme = displayManager.extraConfig.themeName;
@@ -23,11 +29,14 @@
               package = pkgs.kdePackages.sddm;
               extraPackages = displayManager.extraConfig.qtPackages;
             };
-          })
-      ]);
-    environment.systemPackages = with config.desktopEnvironment;
-      lib.mkIf (displayManager.name == "sddm"
-        && (lib.hasAttr "extraConfig" displayManager))
-      displayManager.extraConfig.themePackages;
+          }
+        )
+      ]
+    );
+    environment.systemPackages =
+      with config.desktopEnvironment;
+      lib.mkIf (
+        displayManager.name == "sddm" && (lib.hasAttr "extraConfig" displayManager)
+      ) displayManager.extraConfig.themePackages;
   };
 }

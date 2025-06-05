@@ -7,7 +7,8 @@ let
       FormPosition = "left";
     };
   };
-in {
+in
+{
   desktopEnvironment = {
     sway = true;
     displayManager = {

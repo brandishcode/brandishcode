@@ -1,4 +1,8 @@
-{ pkgs, icons, monitor }:
+{
+  pkgs,
+  icons,
+  monitor,
+}:
 
 {
   desktopEnvironment = {

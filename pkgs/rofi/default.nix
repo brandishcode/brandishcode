@@ -1,11 +1,12 @@
 { pkgs, ... }:
-let rofi-theme-tokyo-night = (pkgs.callPackage ./rofi-theme.nix { });
-in {
+let
+  rofi-theme-tokyo-night = (pkgs.callPackage ./rofi-theme.nix { });
+in
+{
   programs.rofi = {
     enable = true;
     package = pkgs.rofi.override { plugins = [ pkgs.rofi-wayland ]; };
-    theme =
-      "${rofi-theme-tokyo-night}/share/rofi/themes/tokyo-night/tokyonight.rasi";
+    theme = "${rofi-theme-tokyo-night}/share/rofi/themes/tokyo-night/tokyonight.rasi";
     extraConfig = {
       modi = "drun,window,run";
       icon-theme = "Papirus-Dark";
@@ -34,5 +35,8 @@ in {
     };
   };
 
-  home.packages = [ pkgs.rofi-bluetooth rofi-theme-tokyo-night ];
+  home.packages = [
+    pkgs.rofi-bluetooth
+    rofi-theme-tokyo-night
+  ];
 }

@@ -8,8 +8,11 @@
       - username
       - email
     '';
-    check = x:
-      lib.hasAttr "username" x && lib.isString x.username
-      && lib.hasAttr "email" x && lib.isString x.email;
+    check =
+      x:
+      lib.hasAttr "username" x
+      && lib.isString x.username
+      && lib.hasAttr "email" x
+      && lib.isString x.email;
   };
 }

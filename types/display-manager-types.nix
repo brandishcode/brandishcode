@@ -1,9 +1,11 @@
 { lib, myLib }:
 
 let
-  displayManagerExtraConfigChecker = x:
+  displayManagerExtraConfigChecker =
+    x:
     if (lib.hasAttr "extraConfig" x) then
-      (with x;
+      (
+        with x;
         if name == "sddm" then
           if (lib.hasAttr "themePackages" extraConfig) then
             myLib.isListOf lib.types.package extraConfig.themePackages
@@ -12,10 +14,12 @@ let
           else
             true
         else
-          false)
+          false
+      )
     else
       true;
-in {
+in
+{
   displayManagerType = lib.mkOptionType {
     name = "display-manager";
     description = ''
@@ -27,8 +31,11 @@ in {
         themeName = <theme_name>;
       }
     '';
-    check = x:
-      lib.hasAttr "enable" x && lib.isBool x.enable && lib.hasAttr "name" x
+    check =
+      x:
+      lib.hasAttr "enable" x
+      && lib.isBool x.enable
+      && lib.hasAttr "name" x
       && builtins.elem x.name [ "sddm" ]
       && (displayManagerExtraConfigChecker x);
   };

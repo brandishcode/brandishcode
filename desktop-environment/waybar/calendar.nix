@@ -1,6 +1,7 @@
 { lib, config }:
 
-with config.theme.colors; {
+with config.theme.colors;
+{
   default = {
     tooltip-format = "<tt><small>{calendar}</small></tt>";
     format = lib.concatStrings [

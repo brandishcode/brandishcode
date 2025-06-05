@@ -1,7 +1,9 @@
 { lib, myTypes, ... }:
 
-let username = "developer";
-in {
+let
+  username = "developer";
+in
+{
   options = {
     configpath = lib.mkOption {
       default = "nixos-configuration";
