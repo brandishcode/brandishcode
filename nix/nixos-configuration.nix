@@ -4,30 +4,31 @@
   nixpkgs,
   lix-module,
   home-manager,
-  nixvim,
+  nur,
   ...
 }:
 
 flake-utils.lib.eachDefaultSystemPassThrough (
   system:
   let
-    nixvim' = {
-      home.packages = [
-        (nixvim.packages.${system}.default.extend {
-          imports = [ nixvim.nixvim-configs.${system}.js ];
-        })
-      ];
-    };
     inherit ((import ../configurations/user.nix).user) username;
-    args = import ../my-args.nix { inherit (self.pkgs) lib; } // {
+    pkgs = nixpkgs.legacyPackages.${system};
+    args = import ../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
     };
   in
   {
     nixosConfigurations = {
       "${username}" = nixpkgs.lib.nixosSystem {
-        pkgs = self.pkgs;
         modules = [
+          {
+            nixpkgs.overlays = [
+              nur.overlays.default
+              (final: prev: {
+                brandishcode = self.packages.${system};
+              })
+            ];
+          }
           lix-module.nixosModules.default
           { _module.args = args; }
           home-manager.nixosModules.home-manager
@@ -39,12 +40,10 @@ flake-utils.lib.eachDefaultSystemPassThrough (
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = args;
-            # home-manager setup
             home-manager.users.${username} = {
               home.stateVersion = "24.11";
               imports = [
-                ../home-manager
-                nixvim'
+                ./home-manager
               ];
             };
           }

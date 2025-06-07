@@ -1,5 +1,5 @@
 {
-  self,
+  nixpkgs,
   flake-utils,
   treefmt-nix,
   ...
@@ -12,5 +12,6 @@ let
   };
 in
 flake-utils.lib.eachDefaultSystem (system: {
-  formatter = (treefmt-nix.lib.evalModule self.pkgs treefmt).config.build.wrapper;
+  formatter =
+    (treefmt-nix.lib.evalModule nixpkgs.legacyPackages.${system} treefmt).config.build.wrapper;
 })
