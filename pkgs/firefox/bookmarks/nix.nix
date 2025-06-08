@@ -14,6 +14,10 @@
       url = "https://search.nixos.org/options?";
     }
     {
+      name = "nix mkShell";
+      url = "https://ryantm.github.io/nixpkgs/builders/special/mkshell";
+    }
+    {
       name = "nixvim";
       url = "https://nix-community.github.io/nixvim";
     }
