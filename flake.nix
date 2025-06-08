@@ -16,8 +16,8 @@
   outputs =
     inputs@{ flake-utils, ... }:
     flake-utils.lib.meld inputs [
-      ./nix/nixos-configuration.nix
-      ./nix/formatter.nix
-      ./nix/nixvim/sub-flake.nix
+      ./sub-flakes/nixos-configuration.nix
+      ./sub-flakes/formatter.nix
+      ./sub-flakes/nixvim/sub-flake.nix
     ];
 }
