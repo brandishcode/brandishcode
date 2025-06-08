@@ -135,6 +135,7 @@
     system.stateVersion = "24.05"; # Did you read the comment?
 
     # enable flakes
+    nix.settings.bash-prompt-prefix = "nix-develop";
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
