@@ -11,9 +11,9 @@
 flake-utils.lib.eachDefaultSystemPassThrough (
   system:
   let
-    inherit ((import ../configurations/user.nix).user) username;
+    inherit ((import ../../configurations/user.nix).user) username;
     pkgs = nixpkgs.legacyPackages.${system};
-    args = import ../my-args.nix { inherit (pkgs) lib; } // {
+    args = import ../../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
     };
   in
@@ -32,10 +32,10 @@ flake-utils.lib.eachDefaultSystemPassThrough (
           lix-module.nixosModules.default
           { _module.args = args; }
           home-manager.nixosModules.home-manager
-          ../options
-          ../configurations
-          ../system
-          ../desktop-environment
+          ../../options
+          ../../configurations
+          ../../system
+          ../../desktop-environment
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -43,7 +43,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
             home-manager.users.${username} = {
               home.stateVersion = "24.11";
               imports = [
-                ./home-manager
+                ../home-manager
               ];
             };
           }
