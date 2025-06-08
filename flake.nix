@@ -17,7 +17,7 @@
     inputs@{ flake-utils, ... }:
     flake-utils.lib.meld inputs [
       ./sub-flakes/nixos/sub-flake.nix
-      ./sub-flakes/formatter.nix
+      ./sub-flakes/formatter/sub-flake.nix
       ./sub-flakes/nixvim/sub-flake.nix
     ];
 }

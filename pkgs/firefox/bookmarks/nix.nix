@@ -18,6 +18,10 @@
       url = "https://ryantm.github.io/nixpkgs/builders/special/mkshell";
     }
     {
+      name = "nix makeWrapper";
+      url = "https://nixos.org/manual/nixpkgs/stable/#fun-makeWrapper";
+    }
+    {
       name = "nixvim";
       url = "https://nix-community.github.io/nixvim";
     }
