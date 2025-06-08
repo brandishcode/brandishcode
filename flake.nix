@@ -19,5 +19,6 @@
       ./sub-flakes/nixos/sub-flake.nix
       ./sub-flakes/formatter/sub-flake.nix
       ./sub-flakes/nixvim/sub-flake.nix
+      ./sub-flakes/templates/sub-flake.nix
     ];
 }
