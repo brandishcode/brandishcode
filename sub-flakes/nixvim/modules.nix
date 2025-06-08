@@ -7,5 +7,7 @@
 
 {
   imports =
-    [ ./config ] ++ lib.optionals jsSupport [ ./javascript ] ++ lib.optionals javaSupport [ ./java ];
+    [ ./config ]
+    ++ lib.optionals jsSupport [ ./languages/javascript ]
+    ++ lib.optionals javaSupport [ ./languages/java ];
 }
