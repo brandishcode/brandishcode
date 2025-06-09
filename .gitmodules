@@ -1,0 +1,3 @@
+[submodule "brandishcode-packages"]
+	path = brandishcode-packages
+	url = git@github.com:brandishcode/brandishcode-packages.git
