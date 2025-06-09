@@ -18,7 +18,8 @@
     flake-utils.lib.meld inputs [
       ./sub-flakes/nixos/sub-flake.nix
       ./sub-flakes/formatter/sub-flake.nix
-      ./sub-flakes/nixvim/sub-flake.nix
       ./sub-flakes/templates/sub-flake.nix
+      ./sub-flakes/packages/sub-flake.nix
+      ./sub-flakes/overlays/sub-flake.nix
     ];
 }

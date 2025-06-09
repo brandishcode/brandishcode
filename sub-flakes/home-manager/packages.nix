@@ -1,5 +1,5 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ brandishcode.default ];
+  home.packages = with pkgs; [ neovim ];
 }

@@ -24,9 +24,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
           {
             nixpkgs.overlays = [
               nur.overlays.default
-              (final: prev: {
-                brandishcode = self.packages.${system};
-              })
+              self.overlays.default
             ];
           }
           lix-module.nixosModules.default
