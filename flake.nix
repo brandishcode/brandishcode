@@ -5,12 +5,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/nur";
     lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    nixvim.url = "github:nix-community/nixvim";
+    brandishcode-packages.url = "git+file:./brandishcode-packages";
   };
 
   outputs =
@@ -19,7 +18,5 @@
       ./sub-flakes/nixos/sub-flake.nix
       ./sub-flakes/formatter/sub-flake.nix
       ./sub-flakes/templates/sub-flake.nix
-      ./sub-flakes/packages/sub-flake.nix
-      ./sub-flakes/overlays/sub-flake.nix
     ];
 }

@@ -5,6 +5,7 @@
   lix-module,
   home-manager,
   nur,
+  brandishcode-packages,
   ...
 }:
 
@@ -24,7 +25,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
           {
             nixpkgs.overlays = [
               nur.overlays.default
-              self.overlays.default
+              brandishcode-packages.overlays.default
             ];
           }
           lix-module.nixosModules.default
