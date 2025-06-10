@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, brandishcodePackages, ... }:
 
 {
-  home.packages = with pkgs; [ neovim ];
+  home.packages =  [ brandishcodePackages.neovim ];
 }

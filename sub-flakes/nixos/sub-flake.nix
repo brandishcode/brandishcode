@@ -14,6 +14,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
     pkgs = nixpkgs.legacyPackages.${system};
     args = import ../../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
+      brandishcodePackages = brandishcode-packages.packages.${system};
     };
   in
   {
@@ -24,7 +25,6 @@ flake-utils.lib.eachDefaultSystemPassThrough (
             nix.package = pkgs.nixVersions.nix_2_29;
             nixpkgs.overlays = [
               nur.overlays.default
-              brandishcode-packages.overlays.default
             ];
           }
           { _module.args = args; }
