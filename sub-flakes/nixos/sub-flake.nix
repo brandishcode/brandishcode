@@ -1,8 +1,6 @@
 {
-  self,
   flake-utils,
   nixpkgs,
-  lix-module,
   home-manager,
   nur,
   brandishcode-packages,
@@ -23,12 +21,12 @@ flake-utils.lib.eachDefaultSystemPassThrough (
       "${username}" = nixpkgs.lib.nixosSystem {
         modules = [
           {
+            nix.package = pkgs.nixVersions.nix_2_29;
             nixpkgs.overlays = [
               nur.overlays.default
               brandishcode-packages.overlays.default
             ];
           }
-          lix-module.nixosModules.default
           { _module.args = args; }
           home-manager.nixosModules.home-manager
           ../../options
