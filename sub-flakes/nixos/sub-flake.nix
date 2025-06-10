@@ -38,7 +38,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = args;
             home-manager.users.${username} = {
-              home.stateVersion = "24.11";
+              home.stateVersion = "25.05";
               imports = [
                 ../home-manager
               ];
