@@ -1,1 +1,6 @@
-{ imports = [ ./packages ./programs ]; }
+{
+  imports = [
+    ./packages
+    ./programs
+  ];
+}
