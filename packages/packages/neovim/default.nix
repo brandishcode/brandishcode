@@ -1,0 +1,3 @@
+{ brandishcodePackages, ... }:
+
+brandishcodePackages.neovim

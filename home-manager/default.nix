@@ -71,7 +71,6 @@
   };
 
   imports = [
-    ./packages.nix
     ../packages
   ];
 }
