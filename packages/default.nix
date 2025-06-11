@@ -2,5 +2,6 @@
   imports = [
     ./packages
     ./programs
+    ./gui
   ];
 }
