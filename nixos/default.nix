@@ -1,9 +1,9 @@
 {
+  self,
   flake-utils,
   nixpkgs,
-  home-manager,
   nur,
-  brandishcode-packages,
+  home-manager,
   ...
 }:
 
@@ -14,7 +14,6 @@ flake-utils.lib.eachDefaultSystemPassThrough (
     pkgs = nixpkgs.legacyPackages.${system};
     args = import ../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
-      brandishcodePackages = brandishcode-packages.packages.${system};
     };
   in
   {
@@ -33,17 +32,18 @@ flake-utils.lib.eachDefaultSystemPassThrough (
           ../configurations
           ../system
           ../desktop-environment
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = args;
-            home-manager.users.${username} = {
-              home.stateVersion = "25.05";
-              imports = [
-                ../home-manager
-              ];
-            };
-          }
+          self.homeModules
+          # {
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+          #   home-manager.extraSpecialArgs = args;
+          #   home-manager.users.${username} = {
+          #     home.stateVersion = "25.05";
+          #     imports = [
+          #       ../home-manager
+          #     ];
+          #   };
+          # }
         ];
       };
     };

@@ -16,6 +16,7 @@
     inputs@{ flake-utils, ... }:
     flake-utils.lib.meld inputs [
       ./nixos
+      ./home-manager
       ./formatter
       ./templates
     ];
