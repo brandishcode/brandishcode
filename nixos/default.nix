@@ -10,9 +10,9 @@
 flake-utils.lib.eachDefaultSystemPassThrough (
   system:
   let
-    inherit ((import ../../configurations/user.nix).user) username;
+    inherit ((import ../configurations/user.nix).user) username;
     pkgs = nixpkgs.legacyPackages.${system};
-    args = import ../../my-args.nix { inherit (pkgs) lib; } // {
+    args = import ../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
       brandishcodePackages = brandishcode-packages.packages.${system};
     };
@@ -29,10 +29,10 @@ flake-utils.lib.eachDefaultSystemPassThrough (
           }
           { _module.args = args; }
           home-manager.nixosModules.home-manager
-          ../../options
-          ../../configurations
-          ../../system
-          ../../desktop-environment
+          ../options
+          ../configurations
+          ../system
+          ../desktop-environment
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

@@ -72,15 +72,15 @@
 
   imports = [
     ./packages.nix
-    ../../pkgs/tmux
-    ../../pkgs/git
-    ../../pkgs/firefox
-    ../../pkgs/ssh
-    ../../pkgs/foot
-    ../../pkgs/ncmpcpp
-    ../../pkgs/rofi
-    ../../pkgs/chromium
-    ../../pkgs/fcitx5
-    ../../pkgs/ranger
+    ../pkgs/tmux
+    ../pkgs/git
+    ../pkgs/firefox
+    ../pkgs/ssh
+    ../pkgs/foot
+    ../pkgs/ncmpcpp
+    ../pkgs/rofi
+    ../pkgs/chromium
+    ../pkgs/fcitx5
+    ../pkgs/ranger
   ];
 }
