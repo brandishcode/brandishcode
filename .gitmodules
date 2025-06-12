@@ -1,3 +1,6 @@
 [submodule "brandishcode-packages"]
 	path = brandishcode-packages
 	url = git@github.com:brandishcode/brandishcode-packages.git
+[submodule "brandishcode-formatter"]
+	path = brandishcode-formatter
+	url = git@github.com:brandishcode/brandishcode-formatter.git

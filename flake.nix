@@ -6,10 +6,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/nur";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     self.submodules = true;
     brandishcode-packages.url = "./brandishcode-packages";
+    formatter.url = "./brandishcode-formatter";
   };
 
   outputs =
