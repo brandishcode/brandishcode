@@ -9,7 +9,7 @@
 
     self.submodules = true;
     brandishcode-packages.url = "./brandishcode-packages";
-    formatter.url = "./brandishcode-formatter";
+    bcfmt.url = "./brandishcode-formatter";
   };
 
   outputs =

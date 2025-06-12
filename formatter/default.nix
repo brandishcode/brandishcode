@@ -1,9 +1,9 @@
 {
   flake-utils,
-  formatter,
+  bcfmt,
   ...
 }:
 
 flake-utils.lib.eachDefaultSystem (system: {
-  formatter = formatter.formatter.${system};
+  formatter = bcfmt.formatter.${system};
 })
