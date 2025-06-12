@@ -8,7 +8,7 @@
     nur.url = "github:nix-community/nur";
 
     self.submodules = true;
-    brandishcode-packages.url = "./brandishcode-packages";
+    bcpkgs.url = "./brandishcode-packages";
     bcfmt.url = "./brandishcode-formatter";
   };
 

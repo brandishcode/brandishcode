@@ -1,3 +1,3 @@
-{ brandishcodePackages, ... }:
+{ bcpkgs, ... }:
 
-brandishcodePackages.neovim
+bcpkgs.neovim

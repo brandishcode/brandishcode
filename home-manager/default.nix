@@ -3,7 +3,7 @@
   flake-utils,
   nixpkgs,
   home-manager,
-  brandishcode-packages,
+  bcpkgs,
   nur,
   ...
 }:
@@ -15,7 +15,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
     pkgs = nixpkgs.legacyPackages.${system};
     args = import ../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
-      brandishcodePackages = brandishcode-packages.packages.${system};
+      bcpkgs = bcpkgs.packages.${system};
     };
   in
   {
