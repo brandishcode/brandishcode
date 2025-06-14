@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bash
     ./tmux
     ./ssh
     ./rofi
