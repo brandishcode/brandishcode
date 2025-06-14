@@ -14,9 +14,12 @@ let
   pluginDeps = with vimPlugins; [ plenary.nvim ];
   neovimWrapped = wrapNeovimUnstable neovim {
     luaRcContent = builtins.readFile (replaceVars ./config.lua { inherit pname moduleName; });
-    plugins = with vimPlugins; [
-      lazy-nvim
-    ] ++ pluginDeps;
+    plugins =
+      with vimPlugins;
+      [
+        lazy-nvim
+      ]
+      ++ pluginDeps;
   };
 
 in
