@@ -4,14 +4,6 @@
   programs.ranger = {
     enable = true;
     package = pkgs.ranger.overrideAttrs (old: {
-      src = pkgs.fetchFromGitHub {
-        owner = "ranger";
-        repo = "ranger";
-        # url = "https://github.com/ranger/ranger";
-        rev = "b00f923911090204139c9e19ba42e9d80aa0889f";
-        hash = "sha256-ksWlopkqD/98hwVspIRIEGCN/L/OuVlVyXftfza4LhI=";
-      };
-
       preConfigure =
         old.preConfigure
         + ''
