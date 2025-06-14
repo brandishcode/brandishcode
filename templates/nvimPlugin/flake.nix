@@ -1,11 +1,11 @@
 {
-  description = "Neovim plugin for springboot cli";
+  description = "Neovim plugin development shell";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     bcfmt.url = "github:brandishcode/brandishcode-formatter";
+    bcpkgs.url = "github:brandishcode/brandishcode-packages";
   };
 
   outputs =
@@ -14,7 +14,7 @@
       nixpkgs,
       flake-utils,
       bcfmt,
-      neovim-nightly-overlay,
+      bcpkgs,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -22,7 +22,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         pname = "myplugin.nvim";
         lua = pkgs.lua5_4;
-        neovim = neovim-nightly-overlay.packages.${system}.default;
+        neovim = bcpkgs.packages.${system}.neovim;
       in
       {
         formatter = bcfmt.formatter.${system};

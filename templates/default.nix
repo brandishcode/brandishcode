@@ -2,9 +2,9 @@
 
 flake-utils.lib.eachDefaultSystemPassThrough (system: {
   templates = {
-    luaPlugin = {
-      path = ./luaPlugin;
-      description = "A luaPlugin flake, with neovim";
+    nvimPlugin = {
+      path = ./nvimPlugin;
+      description = "A neovim plugin development shell";
     };
   };
 })
