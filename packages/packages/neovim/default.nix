@@ -1,3 +1,7 @@
 { bcpkgs, ... }:
 
-bcpkgs.neovim
+bcpkgs.neovim.override {
+  nixessityConfig = {
+    projectsdir = "/development/nixos/nixos-configuration";
+  };
+}
