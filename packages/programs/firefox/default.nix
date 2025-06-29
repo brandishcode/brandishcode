@@ -8,7 +8,13 @@ let
       tridactyl
     ];
     settings = import ./settings.nix;
-
+    search = {
+      default = "ddg";
+      order = [
+        "ddg"
+        "google"
+      ];
+    };
   };
   firefoxChrome = pkgs.callPackage ./chrome/cascadefox { inherit config; };
 in
