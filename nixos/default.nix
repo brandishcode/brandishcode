@@ -25,6 +25,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
             nixpkgs.overlays = [
               nur.overlays.default
             ];
+            nixpkgs.config.allowUnfree = true;
           }
           { _module.args = args; }
           home-manager.nixosModules.home-manager
