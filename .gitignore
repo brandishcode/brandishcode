@@ -6,3 +6,6 @@ options/local/*
 
 # do not include sandbox
 sandbox
+
+# do not include qemu files
+*.qcow2
