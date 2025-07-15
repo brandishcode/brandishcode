@@ -11,6 +11,8 @@
       if [[ "$IN_NIX_SHELL" == "impure" || "$IN_NIX_SHELL" == "pure" ]]; then
         export PS1='\[\033[41m\]\[\033[1;30m\](nix-shell#$IN_NIX_SHELL)'$BASE_PROMPT
       fi
+      bind '"\e[A":history-search-backward'
+      bind '"\e[B":history-search-forward'
     '';
     enableCompletion = true;
   };

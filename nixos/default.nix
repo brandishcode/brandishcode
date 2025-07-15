@@ -4,6 +4,7 @@
   nixpkgs,
   nur,
   home-manager,
+  sops-nix,
   ...
 }:
 
@@ -45,6 +46,8 @@ flake-utils.lib.eachDefaultSystemPassThrough (
           #     ];
           #   };
           # }
+          sops-nix.nixosModules.sops
+          ./sops.nix
         ];
       };
     };
