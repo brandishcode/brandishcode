@@ -57,6 +57,7 @@
     users.groups = {
       development = { };
     };
+    users.mutableUsers = false;
     users.users.${config.user.username} = {
       isNormalUser = true;
       description = "Developer user";
