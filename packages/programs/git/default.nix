@@ -1,9 +1,9 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   config = {
     home.sessionVariables = {
-      GITHUB_TOKEN = "$(cat ${config.sops.secrets.git_token.path})";
+      GITHUB_TOKEN = "";
     };
 
     programs = {
@@ -17,6 +17,11 @@
       };
       gh = {
         enable = true;
+      };
+      bash = {
+        initExtra = lib.mkMerge [
+          "export GITHUB_TOKEN=$(cat ${config.sops.secrets.git_token.path})"
+        ];
       };
     };
   };
