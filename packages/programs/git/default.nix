@@ -3,7 +3,7 @@
 {
   config = {
     home.sessionVariables = {
-      GITHUB_TOKEN = config.git.token;
+      GITHUB_TOKEN = "$(cat ${config.sops.secrets.git_token.path})";
     };
 
     programs = {

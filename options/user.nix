@@ -39,5 +39,15 @@ in
         Only for non-nixos distro
       '';
     };
+
+    git = lib.mkOption {
+      default = {
+        username = "brandishcode";
+        useremail = "brandishcode@gmail.com";
+      };
+      description = ''
+        Git options
+      '';
+    };
   };
 }

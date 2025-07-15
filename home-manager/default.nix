@@ -5,6 +5,7 @@
   home-manager,
   bcpkgs,
   nur,
+  sops-nix,
   ...
 }:
 
@@ -45,9 +46,11 @@ flake-utils.lib.eachDefaultSystemPassThrough (
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = args;
+      home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
       home-manager.users.${username} = {
         imports = [
           ./home.nix
+          ./sops.nix
         ];
       };
     };

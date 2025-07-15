@@ -7,7 +7,6 @@ let
     ./theme-options.nix
     ./directory-options.nix
     ./systemd-boot-options.nix
-    ./local
   ];
 in
 {
