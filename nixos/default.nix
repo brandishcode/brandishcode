@@ -22,7 +22,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
       "${username}" = nixpkgs.lib.nixosSystem {
         modules = [
           {
-            nix.package = pkgs.nixVersions.nix_2_29;
+            nix.package = pkgs.nixVersions.nix_2_30;
             nixpkgs.overlays = [
               nur.overlays.default
             ];
