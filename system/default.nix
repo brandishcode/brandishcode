@@ -67,6 +67,7 @@
         "dialout"
         "audio"
       ];
+      hashedPasswordFile = config.sops.secrets."users/${config.user.username}".path;
     };
 
     # key mapping
