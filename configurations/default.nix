@@ -11,7 +11,7 @@ let
     imports = [
       ./theme.nix
       desktop-environment
-      ./desktop
+      ./laptop
     ];
   };
 in
