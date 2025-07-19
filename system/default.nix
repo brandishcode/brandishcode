@@ -23,6 +23,19 @@
     boot.loader.efi.canTouchEfiVariables = true;
     networking.hostName = config.hostname; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networking = {
+      interfaces.enp3s0 = {
+        ipv4.addresses = [{
+          address = "172.22.1.120";
+          prefixLength = 21;
+        }];
+      };
+      defaultGateway = {
+        address = "172.22.0.1";
+        interface = "enp3s0";
+      };
+      nameservers = [ "8.8.8.8" ];
+    };
 
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
@@ -141,5 +154,9 @@
       "nix-command"
       "flakes"
     ];
+
+    services.openssh = {
+      enable = true;
+    };
   };
 }
