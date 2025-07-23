@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   profile = {
@@ -14,9 +19,11 @@ let
         "ddg"
         "google"
       ];
+      force = true;
     };
   };
   firefoxChrome = pkgs.callPackage ./chrome/cascadefox { inherit config; };
+  searchEngines = import ./search-engines.nix;
 in
 {
   home.packages = [ firefoxChrome ];
@@ -35,7 +42,10 @@ in
   programs.firefox = {
     enable = true;
     profiles = {
-      default = profile;
+      default = lib.mkMerge [
+        profile
+        searchEngines 
+      ];
       # default = profile // {
       #   userChrome = builtins.readFile ./userChrome.css;
       #   userContent = builtins.readFile ./userContent.css;
