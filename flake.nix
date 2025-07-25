@@ -11,7 +11,9 @@
 
     self.submodules = true;
     bcpkgs.url = "./brandishcode-packages";
+    bcpkgs.inputs.nixpkgs.follows = "nixpkgs";
     bcfmt.url = "./brandishcode-formatter";
+    bcfmt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
