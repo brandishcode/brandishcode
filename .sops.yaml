@@ -1,7 +1,12 @@
 keys:
   - &homemanager age1u8t90aryujqlerzed922kxew9hgafrvlz722myeqwyzghuvk34jqvw3pwj
   - &nixos age1m49xmzamc56p4eyz3udjzpgat9ugtywjrymp5dztyv3tk9j4tgss26ngue
+  - &fin age192vdc9yrkah0ugwpcfn2udykr8fzr0y5pp6elu6e009f50zrld5qda73h5
 creation_rules:
+  - path_regex: secrets/fin.yaml$
+    key_groups:
+      - age:
+        - *fin
   - path_regex: secrets/homemanager.yaml$
     key_groups:
       - age:
