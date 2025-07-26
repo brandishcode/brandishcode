@@ -25,10 +25,12 @@
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networking = {
       interfaces.enp3s0 = {
-        ipv4.addresses = [{
-          address = "172.22.1.120";
-          prefixLength = 21;
-        }];
+        ipv4.addresses = [
+          {
+            address = "172.22.1.120";
+            prefixLength = 21;
+          }
+        ];
       };
       defaultGateway = {
         address = "172.22.0.1";

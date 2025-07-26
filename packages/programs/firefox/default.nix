@@ -44,7 +44,7 @@ in
     profiles = {
       default = lib.mkMerge [
         profile
-        searchEngines 
+        searchEngines
       ];
       # default = profile // {
       #   userChrome = builtins.readFile ./userChrome.css;
@@ -53,11 +53,13 @@ in
       youtube = {
         id = 1;
         isDefault = false;
-      } // profile;
+      }
+      // profile;
       netflix = {
         id = 2;
         isDefault = false;
-      } // profile;
+      }
+      // profile;
     };
   };
 }

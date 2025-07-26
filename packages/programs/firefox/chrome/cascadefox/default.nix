@@ -30,13 +30,12 @@ stdenvNoCC.mkDerivation rec {
     cat ${./userChrome.css} >> $out/cascadefox/chrome/userChrome.css
   '';
 
-  installPhase =
-    ''
-      mkdir -p $out/cascadefox/chrome/includes
-      cat $src/chrome/userChrome.css >> $out/cascadefox/chrome/userChrome.css
-      cp -r $src/chrome/includes/* $out/cascadefox/chrome/includes/
-      rm $out/cascadefox/chrome/includes/cascade-colours.css
-      cp ${coloursConfig} $out/cascadefox/chrome/includes/cascade-colours.css
-    ''
-    + appendToUserChrome;
+  installPhase = ''
+    mkdir -p $out/cascadefox/chrome/includes
+    cat $src/chrome/userChrome.css >> $out/cascadefox/chrome/userChrome.css
+    cp -r $src/chrome/includes/* $out/cascadefox/chrome/includes/
+    rm $out/cascadefox/chrome/includes/cascade-colours.css
+    cp ${coloursConfig} $out/cascadefox/chrome/includes/cascade-colours.css
+  ''
+  + appendToUserChrome;
 }
