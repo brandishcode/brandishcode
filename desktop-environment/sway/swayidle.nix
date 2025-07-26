@@ -6,8 +6,12 @@
       enable = true;
       timeouts = [
         {
-          timeout = 60;
+          timeout = 600;
           command = "${pkgs.swaylock}/bin/swaylock -i ${config.theme.wallpaper}";
+        }
+        {
+          timeout = 3600;
+          command = "systemctl suspend";
         }
       ];
     };
