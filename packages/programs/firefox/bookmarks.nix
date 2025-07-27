@@ -37,7 +37,8 @@
             }
           ];
         }
-      ] ++ (import ./bookmarks);
+      ]
+      ++ (import ./bookmarks);
     }
   ];
 }

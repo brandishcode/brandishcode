@@ -25,10 +25,12 @@
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networking = {
       interfaces.enp3s0 = {
-        ipv4.addresses = [{
-          address = "172.22.1.120";
-          prefixLength = 21;
-        }];
+        ipv4.addresses = [
+          {
+            address = "172.22.1.120";
+            prefixLength = 21;
+          }
+        ];
       };
       defaultGateway = {
         address = "172.22.0.1";
@@ -70,7 +72,7 @@
     users.groups = {
       development = { };
     };
-    users.users.${config.user.username} = {
+    users.users.developer = {
       isNormalUser = true;
       description = "Developer user";
       extraGroups = [
@@ -80,7 +82,11 @@
         "dialout"
         "audio"
       ];
-      hashedPasswordFile = config.sops.secrets."users/${config.user.username}".path;
+      hashedPasswordFile = config.sops.secrets."users/developer".path;
+    };
+    users.users.root = {
+      isSystemUser = true;
+      hashedPasswordFile = config.sops.secrets."users/root".path;
     };
 
     # key mapping
@@ -112,9 +118,7 @@
     # $ nix search wget
     # environment.systemPackages = with pkgs; [ ];
     environment.shellAliases = {
-      nrb = ''
-        sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#${config.user.username})"
-      '';
+
     };
     services.udev.packages = with pkgs; [
       vial

@@ -11,5 +11,5 @@ let
 in
 {
   inherit imports;
-  home-manager.users.${config.user.username} = { inherit imports; };
+  home-manager.users.developer = { inherit imports; };
 }

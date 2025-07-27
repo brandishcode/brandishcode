@@ -8,5 +8,6 @@ in
   home.packages = [
     neovim
     nixessitycore
-  ] ++ (with pkgs; [ npins ]);
+  ]
+  ++ (with pkgs; [ npins ]);
 }
