@@ -15,4 +15,4 @@ let
     ];
   };
 in
-{ home-manager.users.${config.user.username} = myconfig; } // myconfig
+{ home-manager.users.developer = myconfig; } // myconfig

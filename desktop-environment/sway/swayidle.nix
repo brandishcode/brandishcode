@@ -24,7 +24,7 @@
             event = "after-resume";
             command = display "on";
           }
-          { 
+          {
             event = "lock";
             command = (display "off") + "; " + lock;
           }

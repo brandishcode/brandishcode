@@ -72,7 +72,7 @@
     users.groups = {
       development = { };
     };
-    users.users.${config.user.username} = {
+    users.users.developer = {
       isNormalUser = true;
       description = "Developer user";
       extraGroups = [
@@ -82,7 +82,11 @@
         "dialout"
         "audio"
       ];
-      hashedPasswordFile = config.sops.secrets."users/${config.user.username}".path;
+      hashedPasswordFile = config.sops.secrets."users/developer".path;
+    };
+    users.users.root = {
+      isSystemUser = true;
+      hashedPasswordFile = config.sops.secrets."users/root".path;
     };
 
     # key mapping
@@ -114,9 +118,7 @@
     # $ nix search wget
     # environment.systemPackages = with pkgs; [ ];
     environment.shellAliases = {
-      nrb = ''
-        sudo nixos-rebuild switch --flake "path:$(readlink -f /home/${config.user.username}/${config.configpath}/#${config.user.username})"
-      '';
+
     };
     services.udev.packages = with pkgs; [
       vial

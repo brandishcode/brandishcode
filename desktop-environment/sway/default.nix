@@ -8,7 +8,7 @@
 {
   config = lib.mkIf (config.desktopEnvironment.sway) {
     security.polkit.enable = true;
-    home-manager.users.${config.user.username} = {
+    home-manager.users.developer = {
       imports = [
         ./display.nix
         ./keybinding.nix

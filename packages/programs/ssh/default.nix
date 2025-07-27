@@ -7,7 +7,7 @@
 
       matchBlocks = {
         "github.com" = {
-          identityFile = "/home/${config.user.username}/.ssh/github";
+          identityFile = "/home/developer/.ssh/github";
         };
       };
     };

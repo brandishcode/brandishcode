@@ -11,7 +11,6 @@
 flake-utils.lib.eachDefaultSystemPassThrough (
   system:
   let
-    inherit ((import ../configurations/user.nix).user) username;
     pkgs = nixpkgs.legacyPackages.${system};
     args = import ../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
@@ -19,7 +18,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
   in
   {
     nixosConfigurations = {
-      "${username}" = nixpkgs.lib.nixosSystem {
+      developer = nixpkgs.lib.nixosSystem {
         modules = [
           {
             nix.package = pkgs.nixVersions.nix_2_30;

@@ -20,7 +20,7 @@
       enable = true;
       musicDirectory = config.musicDirectory;
       network.listenAddress = "any";
-      user = config.user.username;
+      user = "developer";
       extraConfig = ''
         audio_output {
           type "pipewire"

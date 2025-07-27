@@ -12,7 +12,6 @@
 flake-utils.lib.eachDefaultSystemPassThrough (
   system:
   let
-    inherit ((import ../configurations/user.nix).user) username;
     pkgs = nixpkgs.legacyPackages.${system};
     args = import ../my-args.nix { inherit (pkgs) lib; } // {
       inherit system;
@@ -47,7 +46,7 @@ flake-utils.lib.eachDefaultSystemPassThrough (
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = args;
       home-manager.sharedModules = [ sops-nix.homeManagerModules.sops ];
-      home-manager.users.${username} = {
+      home-manager.users.developer = {
         imports = [
           ./home.nix
           ./sops.nix

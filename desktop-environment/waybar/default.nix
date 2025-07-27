@@ -64,7 +64,7 @@ let
 in
 {
   config = lib.mkIf (config.desktopEnvironment.sway) {
-    home-manager.users.${config.user.username} = {
+    home-manager.users.developer = {
       programs.waybar = {
         enable = true;
         settings = {
