@@ -5,7 +5,7 @@ in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi.override { plugins = [ pkgs.rofi-wayland ]; };
+    package = pkgs.rofi;
     theme = "${rofi-theme-tokyo-night}/share/rofi/themes/tokyo-night/tokyonight.rasi";
     extraConfig = {
       modi = "drun,window,run";
