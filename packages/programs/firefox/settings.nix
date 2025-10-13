@@ -1,7 +1,7 @@
 {
   "browser.startup.homepage" = "https://github.com/brandishcode";
   "extensions.autoDisableScopes" = 0;
-  "layout.css.prefers-color-scheme.content-override" = 2;
+  "layout.css.prefers-color-scheme.content-override" = 1;
   "browser.cache.disk.enable" = false;
   "browser.cache.disk.smart_size.enabled" = false;
   "browser.cache.disk_cache_ssl" = false;
