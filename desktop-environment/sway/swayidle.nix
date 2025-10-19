@@ -11,7 +11,7 @@
         enable = true;
         timeouts = [
           {
-            timeout = 300;
+            timeout = 3600;
             command = "${pkgs.systemd}/bin/systemctl suspend";
           }
         ];
