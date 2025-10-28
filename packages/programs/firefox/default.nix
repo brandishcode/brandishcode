@@ -54,7 +54,10 @@ in
         id = 1;
         isDefault = false;
       }
-      // profile;
+      // profile
+      // {
+        settings."layout.css.prefers-color-scheme.content-override" = 2;
+      };
       netflix = {
         id = 2;
         isDefault = false;
