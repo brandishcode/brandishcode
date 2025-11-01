@@ -16,7 +16,7 @@
       };
       bash = {
         initExtra = lib.mkMerge [
-          "export GITHUB_TOKEN=$(cat ${config.sops.secrets.git_token.path})"
+          # "export GITHUB_TOKEN=$(cat ${config.sops.secrets.git_token.path})"
         ];
       };
     };
