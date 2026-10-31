@@ -8,6 +8,7 @@ let
       value = {
         position = builtins.toString x.position.x + "," + builtins.toString x.position.y;
         bg = "${x.wallpaper} fill";
+        transform = x.transform;
       };
     }) config.monitor
   );
