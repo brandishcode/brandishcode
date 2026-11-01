@@ -10,6 +10,7 @@ in
     neovim
     nixessitycore
     calibre
+    pkgs.protonmail-desktop
   ]
   ++ (with pkgs; [ npins ]);
 }
