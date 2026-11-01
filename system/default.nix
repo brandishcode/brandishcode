@@ -54,6 +54,8 @@
     i18n.supportedLocales = [
       "en_US.UTF-8/UTF-8"
       "ja_JP.UTF-8/UTF-8"
+      "ko_KR.UTF-8/UTF-8"
+      "ko_KR.EUC-KR/EUC-KR"
     ];
 
     i18n.extraLocaleSettings = {
