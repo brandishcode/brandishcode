@@ -8,7 +8,8 @@
         display = status: "${pkgs.sway}/bin/swaymsg 'output * power ${status}'";
       in
       {
-        enable = true;
+        # enable = true;
+        enable = false;
         timeouts = [
           {
             timeout = 3600;
