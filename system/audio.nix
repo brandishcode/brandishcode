@@ -21,12 +21,12 @@
       musicDirectory = config.musicDirectory;
       network.listenAddress = "any";
       user = "developer";
-      extraConfig = ''
-        audio_output {
-          type "pipewire"
-          name "My pipewire output"
-        }
-      '';
+      # settings = ''
+      #   audio_output {
+      #     type "pipewire"
+      #     name "My pipewire output"
+      #   }
+      # '';
     };
     systemd.services.mpd.environment = {
       # must match the services.mpd.user UID
