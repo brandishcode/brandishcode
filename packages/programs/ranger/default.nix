@@ -4,7 +4,7 @@
   programs.ranger = {
     enable = true;
     package = pkgs.ranger.overrideAttrs (old: {
-      preConfigure = old.preConfigure + ''
+      postPatch = old.postPatch + ''
         substituteInPlace ranger/data/scope.sh \
           --replace "# video/*)" "video/*)" \
           --replace "#     # Get frame 10% into video" "    # Get frame 10% into video" \
