@@ -9,7 +9,7 @@ in
       foot = {
         enable = true;
         settings = {
-          colors = with themeColors; {
+          colors-dark = with themeColors; {
             alpha = "0.8";
             background = lib.strings.removePrefix "#" background;
             foreground = lib.strings.removePrefix "#" foreground;
